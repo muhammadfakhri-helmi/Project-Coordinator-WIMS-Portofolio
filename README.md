@@ -4,7 +4,7 @@ A scroll-driven 3D portfolio showing how Fakhri, a Well Integrity Project
 Coordinator, built **WIMS** to turn hundreds of Excel Final Inspection reports
 into structured, traceable and actionable well integrity information.
 
-**Live demo:** _add your GitHub Pages URL here after the first deployment_
+**Live demo:** https://muhammadfakhri-helmi.github.io/Project-Coordinator-WIMS-Portofolio/
 
 ![Hero of the portfolio: headline beside a simplified 3D wellhead and X-mas tree](docs/preview.webp)
 
