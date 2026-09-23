@@ -1,0 +1,28 @@
+{
+  "name": "fakhri-wims-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Scroll-driven 3D portfolio: from Final Inspection reports to coordinated well integrity decisions.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "node scripts/check.mjs",
+    "check:dist": "node scripts/check.mjs --dist"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource-variable/hanken-grotesk": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "gsap": "^3.15.0",
+    "three": "^0.186.0"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0"
+  }
+}

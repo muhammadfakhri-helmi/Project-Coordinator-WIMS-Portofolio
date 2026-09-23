@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Fakhri — From Field Inspection Reports to Well Integrity Decisions</title>
+  <meta name="description" content="How a Well Integrity Project Coordinator built WIMS to turn hundreds of Excel Final Inspection reports into traceable, coordinated well integrity information." />
+  <meta name="theme-color" content="#07111c" />
+  <meta name="color-scheme" content="dark light" />
+  <meta property="og:title" content="From Field Inspection Reports to Well Integrity Decisions" />
+  <meta property="og:description" content="Well integrity project coordination, inspection data governance, human-in-the-loop QC and 3D equipment communication." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#hero" aria-label="Back to top">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__name">Fakhri</span>
+      <span class="brand__role">Well Integrity Project Coordinator</span>
+    </a>
+    <p class="site-header__scene" aria-hidden="true"><span data-scene-num>01</span> <span data-scene-name>The coordinator</span></p>
+    <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
+  </header>
+
+  <nav class="scene-index" aria-label="Story chapters">
+    <ol>
+      <li><a href="#hero"><span class="scene-index__n">01</span><span class="scene-index__t">The coordinator</span></a></li>
+      <li><a href="#problem"><span class="scene-index__n">02</span><span class="scene-index__t">The original problem</span></a></li>
+      <li><a href="#inbox"><span class="scene-index__n">03</span><span class="scene-index__t">Final Inspection Inbox</span></a></li>
+      <li><a href="#qc"><span class="scene-index__n">04</span><span class="scene-index__t">Automation + human QC</span></a></li>
+      <li><a href="#dashboard"><span class="scene-index__n">05</span><span class="scene-index__t">Operational dashboard</span></a></li>
+      <li><a href="#attention"><span class="scene-index__n">06</span><span class="scene-index__t">Need attention</span></a></li>
+      <li><a href="#crew"><span class="scene-index__n">07</span><span class="scene-index__t">Work-quality review</span></a></li>
+      <li><a href="#archive"><span class="scene-index__n">08</span><span class="scene-index__t">Report dictionary</span></a></li>
+      <li><a href="#planning"><span class="scene-index__n">09</span><span class="scene-index__t">Visit planning</span></a></li>
+      <li><a href="#trend"><span class="scene-index__n">10</span><span class="scene-index__t">Performance trend</span></a></li>
+      <li><a href="#equipment"><span class="scene-index__n">11</span><span class="scene-index__t">3D equipment context</span></a></li>
+      <li><a href="#impact"><span class="scene-index__n">12</span><span class="scene-index__t">Connected workflow</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- Fixed 3D stage. Purely presentational: every message is also in the HTML below. -->
+  <div class="stage" data-stage>
+    <div class="stage__canvas" data-stage-canvas aria-hidden="true"></div>
+    <div class="stage__loader" data-loader role="status" aria-live="polite">
+      <span class="stage__loader-ring" aria-hidden="true"></span>
+      <span>Assembling equipment model…</span>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- 01 HERO ============================================================ -->
+    <section id="hero" class="scene scene--dark scene--hero" data-scene="hero" data-scene-label="The coordinator" aria-labelledby="hero-title">
+      <div class="wrap hero">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="eyebrow__n">01</span> Fakhri · Well Integrity Project Coordinator</p>
+          <h1 id="hero-title" class="display display--hero">I built the system that turns hundreds of field inspection reports into coordinated well integrity decisions.</h1>
+          <p class="lede">As a Well Integrity Project Coordinator, I developed WIMS to automate report tracking, preserve human quality control, identify inspection issues, support visit planning, monitor maintenance outcomes, and make physical equipment problems easier to understand.</p>
+          <ul class="capability-index" aria-label="Capability areas">
+            <li><span>01</span>Well Integrity Project Coordination</li>
+            <li><span>02</span>Inspection Data Governance</li>
+            <li><span>03</span>Digital Application Development</li>
+            <li><span>04</span>Maintenance Performance Monitoring</li>
+            <li><span>05</span>Three.js Equipment Visualization</li>
+          </ul>
+          <a class="scroll-cue" href="#problem">
+            <span class="scroll-cue__line" aria-hidden="true"></span>
+            Follow the inspection data
+          </a>
+        </div>
+        <div class="hero__frame" data-fallback-slot="hero" aria-hidden="true"></div>
+      </div>
+      <p class="model-caption wrap">Simplified interactive wellhead/X-mas tree visualization for portfolio communication.</p>
+    </section>
+
+    <!-- 02 PROBLEM ========================================================= -->
+    <section id="problem" class="scene scene--dark" data-scene="problem" data-scene-label="The original problem" aria-labelledby="problem-title">
+      <div class="wrap split-left">
+        <div class="panel-dark">
+          <p class="eyebrow"><span class="eyebrow__n">02</span> The original problem</p>
+          <h2 id="problem-title" class="display">The challenge was not collecting more files. It was turning those files into a reliable coordination system.</h2>
+          <p>Every well visit ends in an Excel Final Inspection report: general information, pressure observations, visual inspection and valve maintenance for each Christmas-tree valve, leak tests and a handover. Reports arrive from different wells, platforms and crews, one workbook at a time.</p>
+
+          <ol class="problem-list">
+            <li>
+              <h3>Reports distributed across separate workbooks</h3>
+              <code class="fragment">SAMPLE FINAL INSPECTION PLATFORM-B #28.xlsx · 6 sheets</code>
+            </li>
+            <li>
+              <h3>Inconsistent well naming</h3>
+              <code class="fragment">WELL-B28 · WELL B 28 · B#28 · WELLB-028</code>
+            </li>
+            <li>
+              <h3>Incomplete or unreadable inspection fields</h3>
+              <code class="fragment">Valve Type: <mark>—</mark> · Easy to Operate: <mark>Yes?</mark></code>
+            </li>
+            <li>
+              <h3>Difficulty locating equipment problems</h3>
+              <code class="fragment">Remarks: “see note” · valve column 10 of 12</code>
+            </li>
+            <li>
+              <h3>Repeated manual recap work</h3>
+              <code class="fragment">recap_valves_final_v7.xlsx</code>
+            </li>
+            <li>
+              <h3>Limited visibility across visits</h3>
+              <code class="fragment">Last visit: <mark>?</mark> · Previous finding: <mark>?</mark></code>
+            </li>
+            <li>
+              <h3>Difficulty planning the next priorities</h3>
+              <code class="fragment">Next due: <mark>not calculated</mark></code>
+            </li>
+          </ol>
+          <p class="note">Fragments above are fictional and follow the structure of a Final Inspection report, not its contents.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 INBOX =========================================================== -->
+    <section id="inbox" class="scene scene--dark" data-scene="inbox" data-scene-label="Final Inspection Inbox" aria-labelledby="inbox-title">
+      <div class="wrap split-left">
+        <div class="panel-dark">
+          <p class="eyebrow"><span class="eyebrow__n">03</span> Final Inspection Inbox</p>
+          <h2 id="inbox-title" class="display">Drop the report into the inspection inbox. WIMS begins tracking it automatically.</h2>
+          <ol class="steps">
+            <li><span class="steps__n">1</span><div><h3>Reports are placed into the Final Inspection Inbox</h3><p>A monitored folder is the single entry point. No one has to remember to upload a file.</p></div></li>
+            <li><span class="steps__n">2</span><div><h3>WIMS detects incoming workbooks</h3><p>The folder is watched for Excel files. Temporary lock files are ignored and a workbook is only read once it has finished copying.</p></div></li>
+            <li><span class="steps__n">3</span><div><h3>Processing begins automatically</h3><p>Each workbook is parsed and saved locally, one after another, with visible progress.</p></div></li>
+            <li><span class="steps__n">4</span><div><h3>The report becomes part of the tracked workflow</h3><p>From here it can be validated, counted, searched, reviewed and planned against — across hundreds of inspection reports.</p></div></li>
+          </ol>
+          <figure class="evidence evidence--dark">
+            <button class="evidence__zoom" type="button" data-zoom>
+              <img src="/assets/screenshots/01-auto-scan-import.webp" width="740" height="465" loading="lazy" decoding="async"
+                   alt="WIMS dialog titled Auto scan active, Importing automatically. A sample Final Inspection workbook is parsing and saving locally, 18 of 42 files, with the message: No review required — data enters WIMS automatically." />
+            </button>
+            <figcaption><span class="tag">Sanitized WIMS screenshot</span> Auto scan importing a workbook from the inbox. File name and counts replaced with fictional values.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 AUTOMATION + HUMAN QC ========================================== -->
+    <section id="qc" class="scene scene--dark" data-scene="qc" data-scene-label="Automation + human QC" aria-labelledby="qc-title">
+      <div class="wrap split-left">
+        <div class="panel-dark">
+          <p class="eyebrow"><span class="eyebrow__n">04</span> Automation with human quality control</p>
+          <h2 id="qc-title" class="display">Automation where the data is reliable. Human review where judgment matters.</h2>
+          <p>Spreadsheet cells are parsed into structured inspection fields. Each record then takes one of two paths.</p>
+
+          <div class="parse" data-parse>
+            <div class="parse__sheet" aria-hidden="true">
+              <span class="parse__cell">Platform :</span><span class="parse__cell">PLATFORM E</span>
+              <span class="parse__cell">Well Name :</span><span class="parse__cell parse__cell--warn">E #02 ?</span>
+              <span class="parse__cell">Master Valve 1</span><span class="parse__cell">Acceptable</span>
+              <span class="parse__cell">Easy to Operate</span><span class="parse__cell">Yes</span>
+              <span class="parse__cell">Tubing Pressure</span><span class="parse__cell">200</span>
+              <span class="parse__cell">Stem Packing Leak</span><span class="parse__cell">NO</span>
+            </div>
+            <ul class="parse__fields" aria-label="Structured fields extracted from each report">
+              <li>Well identity</li><li>Platform</li><li>Inspection date</li><li>Valve position</li><li>Valve type</li>
+              <li>Maintenance outcome</li><li>Pressure result</li><li>Visual finding</li><li>Anomaly</li><li>Personnel / crew</li>
+            </ul>
+          </div>
+
+          <div class="paths">
+            <div class="path path--pass">
+              <p class="path__label"><span class="dot dot--pass" aria-hidden="true"></span>Green path · validated automatically</p>
+              <p>Well identity matches the master well list and the fields are readable. The record enters WIMS with no review step.</p>
+            </div>
+            <div class="path path--attn">
+              <p class="path__label"><span class="dot dot--attn" aria-hidden="true"></span>Amber path · manual confirmation required</p>
+              <p>The well name is ambiguous or not in the master list, or fields are unreadable. That file is paused while the remaining files keep scanning.</p>
+            </div>
+          </div>
+          <p class="callout">Manual mapping is an intentional quality-control gate, not a system failure. As Project Coordinator I keep the final say over uncertain well identities and incomplete information — WIMS proposes a candidate, a person confirms it.</p>
+
+          <figure class="evidence evidence--dark">
+            <button class="evidence__zoom" type="button" data-zoom>
+              <img src="/assets/screenshots/02-manual-well-mapping-qc.webp" width="942" height="900" loading="lazy" decoding="async"
+                   alt="WIMS dialog: Manual well mapping required — Confirm the client master well before saving. It shows the parsed well and platform, one recommended master-list candidate, platform filter and search, the selected correct well, and a Confirm and save mapping button. A note says additional files are waiting for well-name confirmation." />
+            </button>
+            <figcaption><span class="tag">Sanitized WIMS screenshot</span> The human QC gate for well identity. Well, platform and file names are fictional.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 DASHBOARD ======================================================= -->
+    <section id="dashboard" class="scene scene--paper" data-scene="dashboard" data-scene-label="Operational dashboard" aria-labelledby="dashboard-title">
+      <div class="wrap spread">
+        <header class="spread__head">
+          <p class="eyebrow"><span class="eyebrow__n">05</span> Operational dashboard</p>
+          <h2 id="dashboard-title" class="display">Hundreds of reports become one coordinated operational view.</h2>
+          <p>Validated records are counted once, in one place, with the scoring rules written on the screen: Lock Open, Pneumatic and Production Choke valves stay in the reports but are excluded from every score and percentage.</p>
+        </header>
+        <div class="spread__diagram">
+          <ul class="ledger" data-ledger aria-label="Information available in the dashboard">
+            <li data-kind="signal"><span class="ledger__k">Visit status</span><span class="ledger__v">Active and non-active visits</span><span class="ledger__bar" style="--w:.62"></span></li>
+            <li data-kind="signal"><span class="ledger__k">Valve records</span><span class="ledger__v">Total valve records in the population</span><span class="ledger__bar" style="--w:1"></span></li>
+            <li data-kind="signal"><span class="ledger__k">Scored records</span><span class="ledger__v">Valves that count toward performance</span><span class="ledger__bar" style="--w:.78"></span></li>
+            <li data-kind="pass"><span class="ledger__k">Passed</span><span class="ledger__v">Maintenance outcome acceptable</span><span class="ledger__bar" style="--w:.7"></span></li>
+            <li data-kind="crit"><span class="ledger__k">Needs attention</span><span class="ledger__v">Outcome requires follow-up</span><span class="ledger__bar" style="--w:.06"></span></li>
+            <li data-kind="na"><span class="ledger__k">No test</span><span class="ledger__v">Test not performed on the visit</span><span class="ledger__bar" style="--w:.02"></span></li>
+            <li data-kind="attn"><span class="ledger__k">Manual / unreadable</span><span class="ledger__v">Needs data correction before scoring</span><span class="ledger__bar" style="--w:.03"></span></li>
+            <li data-kind="na"><span class="ledger__k">Excluded categories</span><span class="ledger__v">Lock Open · Pneumatic · Production Choke</span><span class="ledger__bar ledger__bar--hatch" style="--w:.22"></span></li>
+          </ul>
+          <p class="note">Bar lengths are schematic, not measured values.</p>
+        </div>
+        <figure class="evidence spread__evidence">
+          <button class="evidence__zoom" type="button" data-zoom>
+            <img src="/assets/screenshots/03-operational-dashboard.webp" width="1400" height="908" loading="lazy" decoding="async"
+                 alt="WIMS dashboard. Active versus non-active visits as a donut chart with two counters, and Valve Maintenance Visit Performance showing visits, valve records and scored valves, a passed percentage gauge, and bars for Passed, Needs attention, No Test and Manual or unreadable, with a line stating how many Lock Open, Pneumatic and Production Choke records are excluded." />
+          </button>
+          <figcaption><span class="tag">Application snapshot — values change as reports are imported.</span> Sanitized: all numbers are fictional demonstration values; logo replaced.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 06 NEED ATTENTION ================================================== -->
+    <section id="attention" class="scene scene--paper" data-scene="attention" data-scene-label="Need attention" aria-labelledby="attention-title">
+      <div class="wrap spread spread--flip">
+        <header class="spread__head">
+          <p class="eyebrow"><span class="eyebrow__n">06</span> Need Attention workflow</p>
+          <h2 id="attention-title" class="display">The system does not only count problems. It shows exactly where they must be corrected.</h2>
+          <p>Dashboard totals break down into individual corrective tasks. Each one carries its full address, so the person fixing it never has to search through workbooks.</p>
+        </header>
+        <div class="spread__diagram">
+          <article class="ticket" data-ticket aria-labelledby="ticket-title">
+            <header class="ticket__head">
+              <span class="ticket__pin">Valve position 3</span>
+              <h3 id="ticket-title">WELL-D05 · Swab Valve</h3>
+            </header>
+            <dl class="ticket__fields">
+              <div><dt>Source workbook</dt><dd><code>SAMPLE FINAL INSPECTION PLATFORM-D #05.xlsx</code></dd></div>
+              <div><dt>Well</dt><dd>WELL-D05 · Platform D</dd></div>
+              <div><dt>Valve position</dt><dd>3 · Swab Valve</dd></div>
+              <div><dt>Affected fields</dt><dd>Maintenance Result · Easy to Operate after grease</dd></div>
+              <div><dt>Reason for review</dt><dd>Easy to Operate changed Yes → No after grease — check possible typo</dd></div>
+            </dl>
+            <ol class="stepper" data-stepper aria-label="Correction status">
+              <li data-step="0"><span>Detected</span></li>
+              <li data-step="1"><span>Reviewed</span></li>
+              <li data-step="2"><span>Corrected</span></li>
+              <li data-step="3"><span>Validated</span></li>
+            </ol>
+            <p class="ticket__status" data-stepper-status aria-live="polite">Detected — the imported values contradict each other, so the valve is flagged instead of being scored.</p>
+          </article>
+          <p class="note">Fictional example. The reason text is one of the real WIMS check rules.</p>
+        </div>
+        <figure class="evidence spread__evidence">
+          <button class="evidence__zoom" type="button" data-zoom>
+            <img src="/assets/screenshots/04-need-attention-corrections.webp" width="1400" height="504" loading="lazy" decoding="async"
+                 alt="WIMS list titled Manual / unreadable locations: Valve Maintenance positions need correction. Each item shows a valve position badge, well and valve, the source workbook name, the fields to check, and a Fix valve data button." />
+          </button>
+          <figcaption><span class="tag">Sanitized WIMS screenshot</span> Corrective queue. Wells, workbooks and totals are fictional.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 07 CREW ============================================================ -->
+    <section id="crew" class="scene scene--paper" data-scene="crew" data-scene-label="Work-quality review" aria-labelledby="crew-title">
+      <div class="wrap spread">
+        <header class="spread__head">
+          <p class="eyebrow"><span class="eyebrow__n">07</span> Crew performance and work-quality review</p>
+          <h2 id="crew-title" class="display">Validated inspection records support fair review and continuous work-quality improvement.</h2>
+          <p>Because every valve outcome is tied to a validated report, crew results can be discussed with evidence rather than impressions.</p>
+        </header>
+        <div class="spread__diagram">
+          <dl class="dimensions">
+            <div><dt>Personnel or crew</dt><dd>Matched to the current roster; unmatched names are flagged for confirmation.</dd></div>
+            <div><dt>Assigned role</dt><dd>Inspector, tester, team leader.</dd></div>
+            <div><dt>Visits</dt><dd>Wells visited in the period.</dd></div>
+            <div><dt>Scored work</dt><dd>Valves that count, out of all valves handled.</dd></div>
+            <div><dt>Passed work</dt><dd>Maintenance outcomes accepted.</dd></div>
+            <div><dt>Attention items</dt><dd>Outcomes needing follow-up.</dd></div>
+            <div><dt>Excluded results</dt><dd>Categories outside the scoring policy.</dd></div>
+            <div><dt>Unresolved items</dt><dd>“Review work” opens the exact well, file and valve checks.</dd></div>
+          </dl>
+          <p class="callout callout--paper">This is a review aid, not an automatic disciplinary ranking. It shows where work quality can improve and where the data itself needs checking first.</p>
+        </div>
+        <figure class="evidence spread__evidence">
+          <button class="evidence__zoom" type="button" data-zoom>
+            <img src="/assets/screenshots/05-crew-performance.webp" width="1400" height="499" loading="lazy" decoding="async"
+                 alt="WIMS Crew Valve Maintenance Performance table with columns for person or crew, role, visits, scored over total, passed, attention, excluded, score and a Review work button. Counters show how many need review and how many personnel or crews are listed." />
+          </button>
+          <figcaption><span class="tag">Sanitized WIMS screenshot</span> Real names replaced with “Inspector A/B/C”; company name and all figures are fictional.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 08 ARCHIVE ========================================================= -->
+    <section id="archive" class="scene scene--paper" data-scene="archive" data-scene-label="Report dictionary" aria-labelledby="archive-title">
+      <div class="wrap">
+        <header class="spread__head spread__head--wide">
+          <p class="eyebrow"><span class="eyebrow__n">08</span> Searchable report dictionary</p>
+          <h2 id="archive-title" class="display">One searchable source for every inspection report.</h2>
+          <p>Every Final Inspection file is registered with its well, platform, inspection date, scope, source and anomaly summary. In WIMS, authorised users can trace a record back to its workbook, view it and download the original.</p>
+        </header>
+
+        <div class="archive" data-archive>
+          <form class="archive__filters" data-archive-filters aria-label="Filter the example report register">
+            <label>Year<select name="year"><option value="">All years</option></select></label>
+            <label>Well<select name="well"><option value="">All wells</option></select></label>
+            <label>Status<select name="status"><option value="">All status</option></select></label>
+            <label>Source<select name="source"><option value="">All sources</option></select></label>
+            <label>Scope<select name="scope"><option value="">All scopes</option></select></label>
+            <label>Anomaly status<select name="anomaly"><option value="">All anomaly status</option></select></label>
+            <button type="reset" class="btn-text">Reset filters</button>
+          </form>
+          <p class="archive__count" data-archive-count aria-live="polite">8 example reports</p>
+          <div class="archive__table" role="region" aria-label="Example report register" tabindex="0">
+            <table>
+              <thead>
+                <tr><th scope="col">Final Inspection file</th><th scope="col">Well / platform</th><th scope="col">Inspection</th><th scope="col">Scope</th><th scope="col">Source</th><th scope="col">Anomalies</th><th scope="col">Original</th></tr>
+              </thead>
+              <tbody data-archive-rows></tbody>
+            </table>
+          </div>
+          <p class="controlled"><span class="lock" aria-hidden="true"></span>Original reports remain controlled within the internal WIMS environment. This register uses fictional demonstration records.</p>
+        </div>
+
+        <figure class="evidence evidence--wide">
+          <button class="evidence__zoom" type="button" data-zoom>
+            <img src="/assets/screenshots/06-report-dictionary.webp" width="1400" height="873" loading="lazy" decoding="async"
+                 alt="WIMS Final Inspection search. Six filters for years, wells, status, data, sources and anomaly status above a results table listing each Final Inspection file with well and platform, inspection date, scope, source, anomaly count with highest severity, and history, view and download actions." />
+          </button>
+          <figcaption><span class="tag">Sanitized WIMS screenshot</span> File names, wells, dates and anomaly counts are fictional; logo replaced.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 09 PLANNING ======================================================== -->
+    <section id="planning" class="scene scene--paper" data-scene="planning" data-scene-label="Visit planning" aria-labelledby="planning-title">
+      <div class="wrap spread spread--flip">
+        <header class="spread__head">
+          <p class="eyebrow"><span class="eyebrow__n">09</span> Visit history and planning</p>
+          <h2 id="planning-title" class="display">Historical inspection records become the basis for the next field priority.</h2>
+          <p>WIMS groups every visit by well and calculates the next due date from the latest valid inspection. It supports planning and recommendations; the Project Coordinator remains responsible for final prioritisation and operational decisions.</p>
+        </header>
+        <div class="spread__diagram">
+          <ol class="timeline" data-timeline aria-label="Planning sequence for a fictional well, WELL-D02">
+            <li class="timeline__rail" data-timeline-line aria-hidden="true" role="presentation"></li>
+            <li class="timeline__node" data-kind="signal">
+              <span class="timeline__k">Last visit</span>
+              <strong>2025-10-06</strong>
+              <span>Final Inspection imported and validated.</span>
+            </li>
+            <li class="timeline__node" data-kind="attn">
+              <span class="timeline__k">Current status</span>
+              <strong>1 valve needs attention</strong>
+              <span>Swab valve outcome flagged on the last visit.</span>
+            </li>
+            <li class="timeline__node" data-kind="signal">
+              <span class="timeline__k">Next due</span>
+              <strong>2026-04-06</strong>
+              <span>Calculated from the latest valid inspection date.</span>
+            </li>
+            <li class="timeline__node timeline__node--decision" data-kind="decision">
+              <span class="timeline__k">Recommended coordination action</span>
+              <strong>Bring the follow-up forward and combine it with the next platform trip</strong>
+              <span>Coordinator decision — weighed against crew availability, platform access and other priorities.</span>
+            </li>
+          </ol>
+          <p class="note">Fictional well and dates.</p>
+        </div>
+        <figure class="evidence spread__evidence">
+          <button class="evidence__zoom" type="button" data-zoom>
+            <img src="/assets/screenshots/07-visit-history-next-due.webp" width="1286" height="710" loading="lazy" decoding="async"
+                 alt="WIMS Visit History screen. The sidebar lists Dashboard, Wells, Well Mapping Status, Final Inspection Search, Visit History, ITM Recommendation, Historical Archive, Anomaly Register, Reports and Settings. The main area shows wells indexed and visit records counters, a search box, and one row per well with last visit and next due dates." />
+          </button>
+          <figcaption><span class="tag">Sanitized WIMS screenshot</span> Visit History and Next Due. Wells, dates and counts are fictional; logo replaced.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 10 TREND =========================================================== -->
+    <section id="trend" class="scene scene--paper" data-scene="trend" data-scene-label="Performance trend" aria-labelledby="trend-title">
+      <div class="wrap">
+        <header class="spread__head spread__head--wide">
+          <p class="eyebrow"><span class="eyebrow__n">10</span> Performance trend</p>
+          <h2 id="trend-title" class="display">Every imported inspection updates the wider well integrity performance picture.</h2>
+          <p>After each import, WIMS recalculates the cumulative passed percentage from 1 January to the latest inspection. Early in the year a single report moves the line; as records accumulate, the line shows the real level of performance.</p>
+        </header>
+        <div class="trend" data-trend>
+          <div class="trend__readout" aria-hidden="true">
+            <p><span class="trend__k">Reports imported</span><span class="trend__v" data-trend-count>0</span></p>
+            <p><span class="trend__k">Cumulative passed</span><span class="trend__v trend__v--pass" data-trend-pct>—</span></p>
+          </div>
+          <figure class="trend__chart">
+            <div data-trend-chart></div>
+            <figcaption class="trend__summary" data-trend-summary>Illustrative data. The cumulative passed share swings widely over the first few imports, then settles into a narrow band as more valve records are included.</figcaption>
+          </figure>
+          <details class="trend__table">
+            <summary>Show chart data as a table</summary>
+            <div data-trend-table></div>
+          </details>
+        </div>
+        <figure class="evidence evidence--wide">
+          <button class="evidence__zoom" type="button" data-zoom>
+            <img src="/assets/screenshots/08-performance-trend.webp" width="1400" height="860" loading="lazy" decoding="async"
+                 alt="WIMS Reports page with totals for all valve work, all unique wells, and the scoring policy, above a line chart of cumulative Valve Maintenance passed percentage from 1 January to the latest inspection." />
+          </button>
+          <figcaption><span class="tag">Sanitized WIMS screenshot</span> Totals and the plotted series are fictional; the chart was redrawn with illustrative data.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 11 EQUIPMENT ======================================================= -->
+    <section id="equipment" class="scene scene--dark scene--equipment" data-scene="equipment" data-scene-label="3D equipment context" aria-labelledby="equipment-title">
+      <div class="wrap equipment">
+        <div class="equipment__copy">
+          <p class="eyebrow"><span class="eyebrow__n">11</span> From spreadsheet issue to 3D equipment context</p>
+          <h2 id="equipment-title" class="display">A spreadsheet can record the issue. A 3D view can show where the issue exists.</h2>
+          <p>Select an inspection record to locate it on the wellhead and X-mas tree, or select a marker on the model.</p>
+
+          <div class="records" role="region" aria-label="Inspection records for the example well" tabindex="-1">
+            <table class="records__table">
+              <caption class="visually-hidden">Fictional inspection records for WELL-A07. Select a row to show it on the 3D model and read the full record.</caption>
+              <thead><tr><th scope="col">Component</th><th scope="col">Latest result</th><th scope="col">Severity</th></tr></thead>
+              <tbody data-records></tbody>
+            </table>
+          </div>
+
+          <article class="detail" data-detail aria-live="polite" aria-labelledby="detail-title">
+            <p class="detail__empty">Select a record or a marker to see the component, its latest result and the recommended follow-up.</p>
+          </article>
+
+          <ul class="legend" aria-label="Marker colours">
+            <li><span class="dot dot--pass" aria-hidden="true"></span>Passed / verified</li>
+            <li><span class="dot dot--attn" aria-hidden="true"></span>Requires attention</li>
+            <li><span class="dot dot--crit" aria-hidden="true"></span>Critical finding</li>
+            <li><span class="dot dot--na" aria-hidden="true"></span>No test / insufficient data</li>
+          </ul>
+        </div>
+
+        <div class="equipment__frame" data-equipment-frame data-fallback-slot="equipment">
+          <div class="viewer-controls" role="group" aria-label="3D view controls">
+            <button type="button" data-view="zoom-in" aria-label="Zoom in">+</button>
+            <button type="button" data-view="zoom-out" aria-label="Zoom out">−</button>
+            <button type="button" data-view="reset">Reset view</button>
+          </div>
+          <p class="viewer-hint">Drag to rotate · Use + / − to zoom</p>
+        </div>
+      </div>
+      <!-- Fixed overlay: hotspot buttons projected from the 3D model, and the record→marker leader line.
+           Kept inside this section so keyboard order is: records → view controls → markers. -->
+      <svg class="stage__leader" data-leader aria-hidden="true"><line x1="0" y1="0" x2="0" y2="0" /></svg>
+      <div class="stage__hotspots" data-hotspot-layer role="group" aria-label="Markers on the 3D model" hidden></div>
+      <p class="model-caption wrap">Simplified interactive wellhead/X-mas tree visualization for portfolio communication. It is a communication and coordination tool, not a replacement for engineering review, and not a certified representation of any equipment.</p>
+    </section>
+
+    <!-- 12 IMPACT ========================================================== -->
+    <section id="impact" class="scene scene--dark scene--impact" data-scene="impact" data-scene-label="Connected workflow" aria-labelledby="impact-title">
+      <div class="wrap">
+        <p class="eyebrow"><span class="eyebrow__n">12</span> The connected workflow</p>
+        <ol class="pipeline" data-pipeline aria-label="WIMS workflow">
+          <li><a href="#inbox">Final Inspection Reports</a></li>
+          <li><a href="#inbox">Automatic Scan</a></li>
+          <li><a href="#qc">Data Validation</a></li>
+          <li><a href="#qc" data-kind="attn">Human QC</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#attention">Corrective Queue</a></li>
+          <li><a href="#crew">Crew Review</a></li>
+          <li><a href="#archive">Report Archive</a></li>
+          <li><a href="#planning">Visit Planning</a></li>
+          <li><a href="#trend">Performance Trend</a></li>
+          <li><a href="#equipment">3D Issue Visualization</a></li>
+        </ol>
+
+        <h2 id="impact-title" class="display display--closing">I coordinate more than activities. I design the information flow that makes those activities visible, traceable, and actionable.</h2>
+
+        <div class="impact__actions">
+          <a class="btn btn--primary" href="#inbox">Explore the WIMS workflow</a>
+          <a class="btn btn--ghost" href="#capabilities">Review my Project Coordinator capabilities</a>
+        </div>
+
+        <section id="capabilities" class="capabilities" aria-labelledby="capabilities-title">
+          <h3 id="capabilities-title" class="capabilities__title">Capabilities, with where to see them</h3>
+          <ul>
+            <li><h4>Well Integrity Coordination</h4><p>Ownership of the inspection cycle from field report to next visit.</p><a href="#planning">Scene 09</a></li>
+            <li><h4>Workflow Automation</h4><p>Monitored inbox, automatic detection and parsing of workbooks.</p><a href="#inbox">Scene 03</a></li>
+            <li><h4>Inspection Data Governance</h4><p>Master well list, explicit scoring exclusions, traceable source files.</p><a href="#dashboard">Scene 05</a></li>
+            <li><h4>Human-in-the-Loop Quality Control</h4><p>Ambiguous identities and unreadable fields paused for confirmation.</p><a href="#qc">Scene 04</a></li>
+            <li><h4>Dashboard Development</h4><p>One operational view of visits and valve-maintenance outcomes.</p><a href="#dashboard">Scene 05</a></li>
+            <li><h4>Maintenance Performance Monitoring</h4><p>Corrective queue, crew review and cumulative trend.</p><a href="#trend">Scene 10</a></li>
+            <li><h4>Visit Planning</h4><p>History and next-due dates as the basis for field priorities.</p><a href="#planning">Scene 09</a></li>
+            <li><h4>3D Technical Communication</h4><p>Findings located on equipment for faster shared understanding.</p><a href="#equipment">Scene 11</a></li>
+          </ul>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="site-footer__disclaimer">This portfolio uses sanitized and simplified representations of inspection workflows. It does not publish client records, original inspection reports, proprietary engineering data, or certified equipment geometry.</p>
+      <p>Supporting inspection documents are managed in a controlled internal environment. All wells, platforms, people, files, dates and figures shown are fictional demonstration data.</p>
+      <p class="site-footer__meta">WIMS Fakhri Creator is an application developed independently by Fakhri. Built with Three.js and GSAP. Fonts: Archivo, Hanken Grotesk, JetBrains Mono (SIL Open Font License).</p>
+    </div>
+  </footer>
+
+  <dialog class="viewer" data-viewer aria-label="Enlarged screenshot">
+    <form method="dialog"><button class="viewer__close" aria-label="Close enlarged screenshot">Close</button></form>
+    <img data-viewer-img alt="" />
+    <p data-viewer-caption></p>
+  </dialog>
+
+  <noscript><p class="noscript">JavaScript is off: the full story is readable below, without the 3D view and interactive demonstrations.</p></noscript>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

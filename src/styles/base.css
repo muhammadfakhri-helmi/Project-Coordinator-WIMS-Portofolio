@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + var(--s2));
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--navy-950);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-lg);
+  line-height: 1.6;
+  font-feature-settings: "ss01", "tnum" 0;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3, h4, p, ol, ul, dl, dd, figure { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+button, input, select { font: inherit; color: inherit; }
+code { font-family: var(--font-mono); font-size: 0.86em; }
+
+a { color: inherit; text-underline-offset: 3px; }
+
+:where(a, button, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.scene--paper :where(a, button, select, summary, [tabindex]):focus-visible { outline-color: var(--signal-ink); }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed; left: var(--s2); top: -100px; z-index: 100;
+  background: var(--signal); color: var(--navy-950);
+  padding: var(--s1) var(--s2); font-weight: 700; text-decoration: none;
+}
+.skip-link:focus { top: var(--s1); }
+
+.noscript {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+  margin: 0; padding: var(--s2); background: var(--attn); color: var(--navy-950); font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

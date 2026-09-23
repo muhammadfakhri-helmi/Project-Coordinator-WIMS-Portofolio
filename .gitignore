@@ -1,0 +1,59 @@
+# dependencies and build output
+node_modules/
+dist/
+.vite/
+coverage/
+
+# environment and secrets
+.env
+.env.*
+!.env.example
+
+# logs and OS / editor noise
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# raw documents and data: never publish inspection workbooks or contracts
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+*.pdf
+*.doc
+*.docx
+*.zip
+*.7z
+*.rar
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+
+# image-editing scratch and original screenshots (only sanitized .webp derivatives are public)
+*.psd
+*.xcf
+*.kra
+*.tmp
+*~
+public/assets/screenshots/*.png
+public/assets/screenshots/*.jpg
+tools/_preview/
+
+# local privacy audit inputs/outputs (contain real identifiers or absolute paths)
+.privacy-terms.local.txt
+audit-local/
+*.local.md
+
+# never copy reference folders into this repository
+01_ENGINEER_BRIEF/
+02_WIMS_SOURCE_CODE/
+03_THREEJS_REFERENCE/
+04_WIMS_SCREENSHOTS/
+05_INSPECTION_DATA/
+06_REFERENCE_DOCUMENTS/
+Final Inspection Inbox/
+.claude/
