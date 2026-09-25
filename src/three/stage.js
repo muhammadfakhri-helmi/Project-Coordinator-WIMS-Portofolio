@@ -14,7 +14,7 @@ const STATUS_HEX = { pass: 0x2fb872, attn: 0xf0a52c, crit: 0xe5484d, na: 0x8b98a
 // Camera composition per scene. frame = [centerX, centerY, height] as
 // fractions of the viewport; fit = world units that must fit that height.
 const PRESETS = {
-  hero: { target: [0, 4.0, 0], theta: 0.5, phi: 1.36, fit: 10.5, desk: [0.83, 0.56, 0.84], mob: [0.5, 0.74, 0.5], spin: -0.35 },
+  hero: { target: [0, 4.0, 0], theta: 0.5, phi: 1.36, fit: 11, desk: [0.76, 0.56, 0.86], mob: [0.5, 0.74, 0.5], spin: -0.35 },
   field: { target: [-0.6, 0, -0.8], theta: 0.12, phi: 0.74, fit: 19, desk: [0.72, 0.52, 0.96], mob: [0.5, 0.5, 0.9], spin: 0 },
   inbox: { target: [-7.0, 2.4, 1.5], theta: 0.05, phi: 1.32, fit: 12, desk: [0.75, 0.52, 0.9], mob: [0.5, 0.5, 0.9], spin: 0.1 },
   qc: { target: [-4.4, 3.0, 1.2], theta: 0.35, phi: 1.28, fit: 8.8, desk: [0.73, 0.5, 0.9], mob: [0.5, 0.5, 0.9], spin: 0.2 },

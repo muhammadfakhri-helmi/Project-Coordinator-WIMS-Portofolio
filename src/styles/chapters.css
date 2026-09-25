@@ -37,10 +37,8 @@
 .scene--paper .doc figcaption { color: var(--paper-dim); }
 .doc .tag { color: var(--attn); }
 .scene--paper .doc .tag { color: var(--attn-ink); }
-.doc--portrait .doc__frame { box-shadow: 0 0 0 1px var(--line-dark-strong); }
-.doc--portrait figcaption { font-family: var(--font-mono); font-size: 11px; }
 
-#hero-title { font-size: clamp(2.1rem, 1rem + 2.7vw, 3.75rem); line-height: 1.02; }
+#hero-title { font-size: clamp(2.4rem, 1.2rem + 3.4vw, 4.6rem); line-height: 1; max-width: 14ch; }
 
 /* capability labels are links into their chapters */
 .capability-index a { text-decoration: none; }
@@ -322,7 +320,6 @@
 
 /* ------------------------------------------------- 11 connected role */
 .pipeline--system { max-width: 1100px; }
-.btn__meta { margin-left: 8px; font-family: var(--font-mono); font-size: 11px; opacity: .7; }
 .capabilities ul { grid-template-columns: repeat(3, 1fr); }
 
 /* ------------------------------------------------------- responsive */
