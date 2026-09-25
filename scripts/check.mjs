@@ -23,6 +23,8 @@ if (!withDist) SKIP_DIRS.add('dist');
 const FORBIDDEN_EXT = new Set(['.xlsx', '.xls', '.xlsm', '.csv', '.pdf', '.doc', '.docx', '.zip', '.7z', '.rar', '.db', '.sqlite', '.sqlite3', '.bak', '.psd', '.exe', '.asar', '.pak']);
 const TEXT_EXT = new Set(['.js', '.mjs', '.cjs', '.ts', '.json', '.html', '.css', '.md', '.txt', '.yml', '.yaml', '.svg', '.py', '.example', '.gitignore', '']);
 const MAX_BYTES = 25 * 1024 * 1024;
+// The one document the site offers for download: the owner's CV.
+const ALLOWED_FILES = new Set(['public/cv/Fakhri-CV.pdf', 'dist/cv/Fakhri-CV.pdf']);
 
 // Patterns are assembled from parts so this file never matches itself.
 const drive = '[A-Za-z]:' + '[\\\\/]' + '(?:Users|Download|Documents|Program|OneDrive|Antigravity)';
@@ -94,7 +96,7 @@ for (const abs of all) {
   const size = statSync(abs).size;
   scanned++;
 
-  if (FORBIDDEN_EXT.has(ext)) problems.push([rel, `forbidden file type ${ext}`]);
+  if (FORBIDDEN_EXT.has(ext) && !ALLOWED_FILES.has(rel)) problems.push([rel, `forbidden file type ${ext}`]);
   if (size > MAX_BYTES) problems.push([rel, `file is ${(size / 1048576).toFixed(1)} MB (limit 25 MB)`]);
   if (/public\/assets\/screenshots\/.*\.(png|jpe?g)$/i.test(rel)) problems.push([rel, 'original-format screenshot; only sanitized .webp derivatives are allowed']);
   if (/(^|\/)\d{2}_[a-z_]+\.png$/i.test(rel)) problems.push([rel, 'file name matches an original WIMS screenshot']);

@@ -21,23 +21,6 @@ const C = {
 };
 
 const isAmber = (i) => i % 8 === 3;
-const HERO_COUNT = 22;
-
-// Sheets 0..6 carry the hero connection lines to these anchors.
-export const HERO_LINKS = ['master', 'swab', 'wing', 'choke', 'gauge', 'flange', 'annulus'];
-
-function hero(S, i, p) {
-  const [r1, r2, r3] = S.seed;
-  if (i >= HERO_COUNT) {
-    // tucked away inside the ring, invisible
-    S.set(i, 0, 4, 0, 0, 0, 0, 0);
-    return;
-  }
-  const a = (i / HERO_COUNT) * Math.PI * 2 + r1[i] * 0.2 + p * 0.6;
-  const rad = 3.4 + r2[i] * 1.5;
-  const y = 1.0 + ((i * 0.37) % 1) * 7.2;
-  S.set(i, Math.cos(a) * rad, y, Math.sin(a) * rad, (r3[i] - 0.5) * 0.3, -a + Math.PI / 2, (r1[i] - 0.5) * 0.25, 0.8, 0.8, C.paper);
-}
 
 function chaos(S, i) {
   const [r1, r2, r3, r4, r5, r6] = S.seed;
@@ -148,4 +131,4 @@ function archiveWall(S, i, p) {
   S.set(i, -9.5 + x * 1.0, 0.6 + y * 1.0, lerp(-3, -6, q), 0, 0, 0, 0.62, 0.78, col);
 }
 
-export const LAYOUTS = { hero, problem: chaos, inbox, qc, equipment: hidden, impact: archiveWall };
+export const LAYOUTS = { hero: hidden, field: hidden, inbox, qc, equipment: hidden, impact: archiveWall };

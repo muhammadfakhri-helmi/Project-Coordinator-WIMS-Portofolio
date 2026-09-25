@@ -5,11 +5,13 @@
 export const SCHEMATIC_POINTS = {
   gauge: [150, 66],
   swab: [150, 133],
+  upperMaster: [150, 220],
   wing: [205, 177],
   choke: [254, 177],
   master: [150, 265],
   flange: [150, 314],
   annulus: [236, 336],
+  conductor: [150, 411],
 };
 
 export const SCHEMATIC_SVG = `

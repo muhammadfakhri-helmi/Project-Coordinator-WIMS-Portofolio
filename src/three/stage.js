@@ -4,7 +4,8 @@ import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { buildWellhead } from './wellhead.js';
 import { ReportSheets } from './reportSheets.js';
-import { LAYOUTS, PLACES, HERO_LINKS } from './layouts.js';
+import { buildRouteMap } from './routeMap.js';
+import { LAYOUTS, PLACES } from './layouts.js';
 import { env, clamp, lerp } from '../utils/env.js';
 
 const FOV = 36;
@@ -13,8 +14,8 @@ const STATUS_HEX = { pass: 0x2fb872, attn: 0xf0a52c, crit: 0xe5484d, na: 0x8b98a
 // Camera composition per scene. frame = [centerX, centerY, height] as
 // fractions of the viewport; fit = world units that must fit that height.
 const PRESETS = {
-  hero: { target: [0, 4.2, 0], theta: 0.5, phi: 1.36, fit: 13.5, desk: [0.68, 0.55, 0.92], mob: [0.5, 0.74, 0.5], spin: -0.35 },
-  problem: { target: [-2.5, 4, -1.5], theta: 0.3, phi: 1.24, fit: 17, desk: [0.72, 0.5, 1], mob: [0.5, 0.5, 1], spin: 0.1 },
+  hero: { target: [0, 4.0, 0], theta: 0.5, phi: 1.36, fit: 10.5, desk: [0.83, 0.56, 0.84], mob: [0.5, 0.74, 0.5], spin: -0.35 },
+  field: { target: [-0.6, 0, -0.8], theta: 0.12, phi: 0.74, fit: 19, desk: [0.72, 0.52, 0.96], mob: [0.5, 0.5, 0.9], spin: 0 },
   inbox: { target: [-7.0, 2.4, 1.5], theta: 0.05, phi: 1.32, fit: 12, desk: [0.75, 0.52, 0.9], mob: [0.5, 0.5, 0.9], spin: 0.1 },
   qc: { target: [-4.4, 3.0, 1.2], theta: 0.35, phi: 1.28, fit: 8.8, desk: [0.73, 0.5, 0.9], mob: [0.5, 0.5, 0.9], spin: 0.2 },
   equipment: { target: [0.4, 4.3, 0], theta: 0.62, phi: 1.3, fit: 10.2, desk: [0.72, 0.52, 0.9], mob: [0.5, 0.3, 0.6], spin: 0 },
@@ -71,7 +72,13 @@ export class Stage {
     this.sheets = new ReportSheets(this.low ? 56 : 160);
     scene.add(this.sheets.mesh);
 
-    this.buildLinks();
+    this.route = buildRouteMap({ low: this.low });
+    scene.add(this.route.root);
+
+    // hero: the model assembles from a dark silhouette, part by part
+    this.intro = env.reducedMotion ? 1 : 0;
+    this.revealed = -1;
+    this.clock = performance.now();
 
     // eased view state
     const p = PRESETS.hero;
@@ -83,7 +90,7 @@ export class Stage {
       cx: 0.72,
       cy: 0.55,
       spin: p.spin,
-      w: { gate: 0, tray: 0, hold: 0, links: 1 },
+      w: { gate: 0, tray: 0, hold: 0 },
     };
     this.tmp = new THREE.Vector3();
     this.raycaster = new THREE.Raycaster();
@@ -125,6 +132,7 @@ export class Stage {
     blob.rotation.x = -Math.PI / 2;
     blob.position.y = -0.28;
     s.add(blob);
+    this.blob = blob;
 
     const lineMat = (color) => new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0 });
     const frame = (w, h, d, color) => new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(w, h, d)), lineMat(color));
@@ -147,14 +155,6 @@ export class Stage {
     this.hold = frame(2.6, 1.2, 1.0, 0xf0a52c);
     this.hold.position.copy(PLACES.hold).add(new THREE.Vector3(0.9, 0.35, 0));
     s.add(this.hold);
-  }
-
-  buildLinks() {
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(HERO_LINKS.length * 6), 3));
-    this.links = new THREE.LineSegments(geo, new THREE.LineBasicMaterial({ color: 0x46c2e0, transparent: true, opacity: 0.5 }));
-    this.links.frustumCulled = false;
-    this.scene3.add(this.links);
   }
 
   // ------------------------------------------------------------ public API
@@ -191,9 +191,34 @@ export class Stage {
     const a = this.wellhead.anchors[part];
     if (a) {
       a.getWorldPosition(this.tmp);
-      this.focusY = clamp(this.tmp.y, 2.5, 6.5);
+      this.focusY = clamp(this.tmp.y, 1.2, 7.2);
+      // turn the model so the selected component faces the camera
+      const local = this.wellhead.root.worldToLocal(this.tmp.clone());
+      const want = Math.atan2(local.x, local.z) + this.view.spin - PRESETS.equipment.theta;
+      const cur = this.user.theta;
+      this.user.theta = cur + Math.atan2(Math.sin(want - cur), Math.cos(want - cur));
     }
     this.kick();
+  }
+
+  /** Chapter 04: emphasise one crew route (or null for both). */
+  setRouteFocus(id) {
+    this.route.setFocus(id);
+    this.kick();
+  }
+
+  setRouteNode(id) {
+    this.route.setActive(id);
+    this.kick();
+  }
+
+  routeScreen(id, out) {
+    this.route.anchors[id].getWorldPosition(this.tmp);
+    this.tmp.project(this.camera);
+    out.x = (this.tmp.x * 0.5 + 0.5) * this.width;
+    out.y = (-this.tmp.y * 0.5 + 0.5) * this.height;
+    out.visible = this.tmp.z < 1;
+    return out;
   }
 
   orbit(dTheta, dPhi) {
@@ -240,7 +265,7 @@ export class Stage {
   }
 
   onFrame(fn) {
-    this.afterRender = fn;
+    (this.afterRender ||= []).push(fn);
   }
 
   // ------------------------------------------------------------ internals
@@ -301,6 +326,7 @@ export class Stage {
       dist *= this.user.zoom;
     }
     if (this.scene === 'hero') theta += this.progress * 0.25;
+    if (this.scene === 'field') theta += (this.progress - 0.5) * 0.3;
     return { target: t.clone(), theta, phi, dist, cx, cy, spin: p.spin };
   }
 
@@ -337,7 +363,6 @@ export class Stage {
         gate: s === 'inbox' || s === 'qc' ? 1 : 0,
         tray: s === 'inbox' ? 1 : s === 'qc' ? 0.25 : 0,
         hold: s === 'qc' ? clamp(1 - (this.progress - 0.7) / 0.25) : 0,
-        links: s === 'hero' ? clamp(1 - this.progress * 1.4) : 0,
       };
       for (const key in wt) v.w[key] = ease(v.w[key], wt[key]);
     }
@@ -355,6 +380,34 @@ export class Stage {
     this.camera.setViewOffset(this.width, this.height, -this.offX, -this.offY, this.width, this.height);
     this.wellhead.root.rotation.y = v.spin;
 
+    // which subject is on stage: the equipment or the route map
+    const field = this.scene === 'field';
+    this.wellhead.root.visible = !field;
+    this.blob.visible = !field;
+    this.route.root.visible = field;
+    this.sheets.mesh.visible = this.scene === 'inbox' || this.scene === 'qc' || this.scene === 'impact';
+    if (field) {
+      if (!reduced) {
+        this.route.update(performance.now() / 1000);
+        moving = Math.max(moving, 1); // vessels keep sailing while the map is on screen
+      } else this.route.update(4);
+    }
+
+    // hero reveal: a short assembly on load, finished early by scrolling
+    const now = performance.now();
+    const dt = Math.min(0.1, (now - this.clock) / 1000);
+    this.clock = now;
+    if (this.intro < 1) {
+      this.intro = reduced ? 1 : Math.min(1, this.intro + dt / 3.2);
+      moving = Math.max(moving, 1 - this.intro);
+    }
+    const r = this.scene === 'hero' ? Math.min(1, Math.max(this.intro, window.scrollY / (this.height * 0.5))) : 1;
+    if (r > this.revealed + 0.001) {
+      this.revealed = r;
+      this.wellhead.reveal(this.revealed);
+    }
+    moving = Math.max(moving, this.wellhead.step(reduced ? 1 : 0.12));
+
     // helpers
     this.tray.material.opacity = v.w.tray * 0.6;
     this.gate.children[0].material.opacity = v.w.gate * 0.9;
@@ -367,22 +420,8 @@ export class Stage {
     // sheets
     moving = Math.max(moving, this.sheets.step(reduced ? 1 : 0.08));
 
-    // hero connection lines: sheet → component
-    this.links.visible = v.w.links > 0.01;
-    if (this.links.visible) {
-      this.links.material.opacity = v.w.links * 0.45;
-      const arr = this.links.geometry.attributes.position.array;
-      HERO_LINKS.forEach((part, i) => {
-        const sp = this.sheets.position(i);
-        arr.set([sp.x, sp.y, sp.z], i * 6);
-        this.wellhead.anchors[part].getWorldPosition(this.tmp);
-        arr.set([this.tmp.x, this.tmp.y, this.tmp.z], i * 6 + 3);
-      });
-      this.links.geometry.attributes.position.needsUpdate = true;
-    }
-
     this.renderer.render(this.scene3, this.camera);
-    if (this.afterRender) this.afterRender();
+    this.afterRender?.forEach((fn) => fn());
 
     if (moving > 0.0015 || this.dragging) this.kick();
   }

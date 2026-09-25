@@ -5,6 +5,7 @@ import './styles/tokens.css';
 import './styles/base.css';
 import './styles/layout.css';
 import './styles/components.css';
+import './styles/chapters.css';
 
 import { hasWebGL } from './utils/env.js';
 import { initArchive } from './components/archive.js';
@@ -12,6 +13,9 @@ import { initTrend } from './components/trendChart.js';
 import { initViewer } from './components/viewer.js';
 import { initEquipment } from './components/equipment.js';
 import { initStory } from './scenes/story.js';
+import { initMotion } from './components/motion.js';
+import { initReadiness } from './components/readiness.js';
+import { initFieldMap } from './components/fieldMap.js';
 
 document.documentElement.classList.add('js');
 
@@ -21,6 +25,9 @@ const trend = initTrend();
 initViewer();
 const equipment = initEquipment();
 const story = initStory({ trend, archiveRows: archive.rows });
+initMotion();
+initReadiness();
+const fieldMap = initFieldMap();
 
 // 2. The 3D stage is a separate chunk, loaded after first paint.
 const loader = document.querySelector('[data-loader]');
@@ -33,6 +40,7 @@ function useFallback(reason) {
   if (reason) console.info('3D view unavailable:', reason);
   document.querySelector('[data-stage]').classList.add('is-hidden');
   equipment.useFallback();
+  fieldMap.useFallback();
   doneLoading();
 }
 
@@ -43,6 +51,7 @@ async function loadStage() {
     const stage = new Stage(document.querySelector('[data-stage-canvas]'));
     if (import.meta.env.DEV) window.__stage = stage; // debugging aid, stripped from builds
     equipment.attachStage(stage);
+    fieldMap.attachStage(stage);
     story.attachStage(stage);
     doneLoading();
   } catch (err) {

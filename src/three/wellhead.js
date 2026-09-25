@@ -22,7 +22,7 @@ function makeMaterials() {
 
 /**
  * @param {{ detail?: 'high' | 'low' }} opts
- * @returns {{ root: THREE.Group, anchors: Record<string, THREE.Object3D>, pickables: THREE.Mesh[], highlight: (part: string|null, color?: number) => void, dispose: () => void }}
+ * @returns {{ root: THREE.Group, anchors: Record<string, THREE.Object3D>, pickables: THREE.Mesh[], highlight: (part: string|null, color?: number) => void, step: (k?: number) => number, reveal: (t: number) => void, dispose: () => void }}
  */
 export function buildWellhead({ detail = 'high' } = {}) {
   const hi = detail === 'high';
@@ -199,9 +199,18 @@ export function buildWellhead({ detail = 'high' } = {}) {
   }
 
   // ---- stack (y = 0 is deck level) ------------------------------------
-  const plinth = cyl(1.9, 2.1, 0.3, M.plinth, SEG);
-  plinth.position.y = -0.15;
+  const plinth = cyl(1.9, 2.1, 0.12, M.plinth, SEG);
+  plinth.position.y = -0.24;
   root.add(plinth);
+
+  // conductor: outermost pipe the wellhead is landed on
+  const conductor = new THREE.Group();
+  conductor.add(cyl(1.5, 1.5, 0.42, M.paintDark));
+  const lip = cyl(1.62, 1.62, 0.06, M.flange);
+  lip.position.y = 0.19;
+  conductor.add(lip);
+  place('conductor', conductor, 0, -0.1);
+  anchorAt('conductor', conductor, 0.4, 0, 1.5);
 
   const casingHead = place('casingHead', spool(1.4, 1.12, 1.3), 0, 0.75);
   radial(casingHead, sideOutlet(1.3, false), 0.1, Math.PI);
@@ -222,7 +231,8 @@ export function buildWellhead({ detail = 'high' } = {}) {
 
   const lmv = place('master', verticalValve(1), 0, 4.0);
   anchorAt('master', lmv, 0, 0, 0.56);
-  place('upperMaster', verticalValve(-1), 0, 4.98);
+  const umv = place('upperMaster', verticalValve(-1), 0, 4.98);
+  anchorAt('upperMaster', umv, 0, 0, 0.56);
 
   const cross = new THREE.Group();
   cross.add(cyl(0.52, 0.52, 0.6, M.paint));
@@ -304,36 +314,84 @@ export function buildWellhead({ detail = 'high' } = {}) {
     bolts.push(boltMesh);
   }
 
-  // ---- per-part material clones so a part can be tinted on selection ----
+  // ---- per-part material clones: tint on selection, reveal from silhouette --
+  // Reveal order runs bottom to top, the way the equipment is assembled.
+  const ORDER = ['conductor', 'casingHead', 'tubingSpool', 'annulus', 'flange', 'master', 'upperMaster', 'cross', 'wing', 'killWing', 'choke', 'swab', 'cap', 'gauge'];
+  const PICKABLE = new Set(['master', 'upperMaster', 'swab', 'wing', 'choke', 'gauge', 'flange', 'annulus', 'conductor']);
+  const SILHOUETTE = new THREE.Color(0x0a121b);
   const pickables = [];
   const tinted = {};
-  for (const key of ['master', 'swab', 'wing', 'choke', 'gauge', 'flange', 'annulus']) {
+  const claimed = new Set();
+  // nested parts first: the annulus outlet sits inside the tubing spool group
+  for (const key of ['annulus', ...ORDER.filter((k) => k !== 'annulus')]) {
     const cache = new Map();
     tinted[key] = [];
     parts[key].traverse((o) => {
-      if (!o.isMesh || o.isInstancedMesh) return;
+      if (!o.isMesh || o.isInstancedMesh || claimed.has(o)) return;
+      claimed.add(o);
       if (!cache.has(o.material)) {
         const c = o.material.clone();
+        c.userData.base = c.color.clone();
+        c.userData.metal = c.metalness;
         cache.set(o.material, c);
         tinted[key].push(c);
       }
       o.material = cache.get(o.material);
       o.userData.part = key;
-      pickables.push(o);
+      if (PICKABLE.has(key)) pickables.push(o);
     });
   }
+  // shared (unclaimed) materials: bolts, extra outlets, kill cap
+  const shared = Object.values(M);
+  shared.forEach((m) => {
+    m.userData.base = m.color.clone();
+    m.userData.metal = m.metalness;
+  });
+
+  // emissive eases toward its target so a state change reads as a transition
+  const glow = Object.fromEntries(ORDER.map((k) => [k, { now: 0, target: 0, color: new THREE.Color(0x46c2e0) }]));
 
   function highlight(part, color = 0x46c2e0) {
-    for (const [key, mats] of Object.entries(tinted)) {
-      for (const m of mats) {
-        if (key === part) {
-          m.emissive.setHex(color);
-          m.emissiveIntensity = 0.42;
-        } else {
-          m.emissive.setHex(0x000000);
-        }
+    for (const key of ORDER) {
+      const g = glow[key];
+      g.target = key === part ? 0.34 : 0;
+      if (key === part) g.color.setHex(color);
+    }
+  }
+
+  /** Ease emissive tints; returns the largest remaining difference. */
+  function step(k = 0.12) {
+    let moving = 0;
+    for (const key of ORDER) {
+      const g = glow[key];
+      const d = g.target - g.now;
+      if (Math.abs(d) < 0.002) g.now = g.target;
+      else g.now += d * k;
+      moving = Math.max(moving, Math.abs(d));
+      for (const m of tinted[key]) {
+        m.emissive.copy(g.color);
+        m.emissiveIntensity = g.now;
       }
     }
+    return moving;
+  }
+
+  /** 0 = dark silhouette, 1 = fully lit. Parts come in one after another. */
+  function reveal(t) {
+    const n = ORDER.length;
+    ORDER.forEach((key, i) => {
+      const q = Math.min(1, Math.max(0, t * (n + 2) - i));
+      const e = q * q * (3 - 2 * q);
+      for (const m of tinted[key]) {
+        m.color.copy(SILHOUETTE).lerp(m.userData.base, e);
+        m.metalness = m.userData.metal * e;
+      }
+    });
+    const e = Math.min(1, Math.max(0, t * 1.1));
+    shared.forEach((m) => {
+      m.color.copy(SILHOUETTE).lerp(m.userData.base, e);
+      m.metalness = m.userData.metal * e;
+    });
   }
 
   function dispose() {
@@ -344,5 +402,5 @@ export function buildWellhead({ detail = 'high' } = {}) {
     Object.values(tinted).flat().forEach((m) => m.dispose());
   }
 
-  return { root, anchors, pickables, highlight, dispose, bolts };
+  return { root, anchors, pickables, highlight, step, reveal, order: ORDER, dispose, bolts };
 }
