@@ -92,8 +92,9 @@ export function initEquipment() {
       ['Maintenance outcome', h.outcome],
       ['Severity', h.severity],
       ['Inspection date', h.date],
-      ['Source report', h.source],
+      ['Linked report', h.source],
       ['Recommended follow-up', h.followUp],
+      ['Next visit', h.nextVisit],
       ['Evidence status', h.evidence],
     ];
     detail.append(
@@ -126,7 +127,7 @@ export function initEquipment() {
   // ---- 3D-only behaviour: projection, orbit, picking, leader line -------
   function wire3D() {
     stage.setFrameElement('equipment', frame);
-    stage.setFrameElement('hero', document.querySelector('.hero__frame'), { mobileOnly: true });
+    stage.setFrameElement('hero', document.querySelector('.hero__frame'));
     frame.tabIndex = 0;
     frame.setAttribute('role', 'group');
     frame.setAttribute('aria-label', '3D equipment view. Use arrow keys to rotate and plus or minus to zoom. Hotspot buttons follow.');

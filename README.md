@@ -1,34 +1,55 @@
-# From Field Inspection Reports to Well Integrity Decisions
+# Project Coordinator – Well Integrity · OSES Case Study
 
-A scroll-driven 3D portfolio showing how Fakhri, a Well Integrity Project
-Coordinator, built **WIMS** to turn hundreds of Excel Final Inspection reports
-into structured, traceable and actionable well integrity information.
+A scroll-driven 3D portfolio about Fakhri's role as Project Coordinator – Well
+Integrity on the OSES wellhead and X-mas tree preventive-maintenance project:
+contract and P&L setup, HSE governance, crew and equipment readiness, two
+vessel-based field crews, WIMS inspection data, integrity review, commercial
+control and client SPR reviews.
 
 **Live demo:** https://muhammadfakhri-helmi.github.io/Project-Coordinator-WIMS-Portofolio/
 
 ![Hero of the portfolio: headline beside a simplified 3D wellhead and X-mas tree](docs/preview.webp)
 
 > **Disclaimer.** This portfolio uses sanitized and simplified representations
-> of inspection workflows. It does not publish client records, original
-> inspection reports, proprietary engineering data, or certified equipment
-> geometry.
+> of project workflows. It does not publish client records, original
+> inspection reports, contract values, proprietary engineering data, or
+> certified equipment geometry. Documentary photographs are real project
+> records, redacted before upload.
 
 ## What it shows
 
-Twelve scenes, one continuous scroll:
+Eleven chapters, one continuous scroll:
 
-1. The coordinator — headline and a procedural wellhead/X-mas tree
-2. The original problem — scattered workbooks, inconsistent naming, manual recaps
-3. Final Inspection Inbox — reports enter a monitored folder and are scanned automatically
-4. Automation with human QC — green path validated automatically, amber path confirmed by a person
-5. Operational dashboard — one view of visits and valve-maintenance outcomes
-6. Need Attention — each issue addressed to workbook, well, valve position and fields
-7. Crew performance — validated records for fair work-quality review
-8. Report dictionary — a working filter demo over a fictional register
-9. Visit planning — last visit → status → next due → coordinator decision
-10. Performance trend — cumulative passed percentage redrawn import by import
-11. 3D equipment context — inspection records located on the equipment, with details
-12. Connected workflow — the whole flow, closing statement and capabilities
+1. The Project Coordinator — portrait, headline, wellhead assembling from a dark silhouette
+2. A controlled plan — Contract Review → P&L → HSE Plan → Bridging Document → Crew Matrix → Equipment Readiness → Mobilization
+3. Crew and equipment readiness — filterable readiness matrix and count-once outcome counters
+4. Field execution — abstract route map with two vessel loops, selectable routes and nodes (SVG on small screens)
+5. From field reports to WIMS — the 8-step data pipeline, then the original WIMS scenes (5.1–5.8)
+6. Wellhead integrity model — eight selectable components, status colours, linked report and next visit, 53% → 68% team result
+7. Continuous evaluation — three review layers and a finding followed to closure
+8. HSE governance — control relationships and verified project-period indicators
+9. Commercial control — revenue, invoice status, cost, margin and opportunity shown separately; TKDN
+10. SPR and client review — two synchronized panels
+11. The connected role — the whole control system, closing statement, CTAs
+
+Design spec: `docs/superpowers/specs/2026-09-25-oses-project-coordinator-design.md`.
+
+## Documentary photographs
+
+Upload the six **pre-redacted** photographs to
+`portfolio-assets/oses-project-coordinator/real-documentary/` (names in the README
+there), then run:
+
+```bash
+python3 tools/build_documentary.py
+```
+
+It writes resized WebP/AVIF files to `public/assets/documentary/` (only
+resizing and re-encoding; metadata dropped). The page adds its grade, grain,
+vignette and a confidentiality layer over the projected SPR slide.
+
+The "Download CV" button links to `public/cv/Fakhri-CV.pdf`, the one PDF the
+privacy checker allows.
 
 ## Features
 

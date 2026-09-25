@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Fakhri — From Field Inspection Reports to Well Integrity Decisions</title>
-  <meta name="description" content="How a Well Integrity Project Coordinator built WIMS to turn hundreds of Excel Final Inspection reports into traceable, coordinated well integrity information." />
+  <title>Fakhri — Project Coordinator, Well Integrity · OSES Case Study</title>
+  <meta name="description" content="How Fakhri coordinated contract, P&amp;L, HSE, crew readiness, two vessel-based field crews, WIMS inspection data and client SPR reviews on the OSES wellhead and X-mas tree preventive-maintenance project." />
   <meta name="theme-color" content="#07111c" />
   <meta name="color-scheme" content="dark light" />
-  <meta property="og:title" content="From Field Inspection Reports to Well Integrity Decisions" />
-  <meta property="og:description" content="Well integrity project coordination, inspection data governance, human-in-the-loop QC and 3D equipment communication." />
+  <meta property="og:title" content="Project Coordinator – Well Integrity · OSES case study" />
+  <meta property="og:description" content="Project controls, field coordination, well integrity data, HSE governance and commercial performance on a wellhead and X-mas tree preventive-maintenance project." />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
@@ -19,26 +19,25 @@
     <a class="brand" href="#hero" aria-label="Back to top">
       <span class="brand__mark" aria-hidden="true"></span>
       <span class="brand__name">Fakhri</span>
-      <span class="brand__role">Well Integrity Project Coordinator</span>
+      <span class="brand__role">Project Coordinator – Well Integrity</span>
     </a>
-    <p class="site-header__scene" aria-hidden="true"><span data-scene-num>01</span> <span data-scene-name>The coordinator</span></p>
+    <p class="site-header__scene" aria-hidden="true"><span data-scene-num>01</span> <span data-scene-name>The Project Coordinator</span></p>
     <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
   </header>
 
   <nav class="scene-index" aria-label="Story chapters">
     <ol>
-      <li><a href="#hero"><span class="scene-index__n">01</span><span class="scene-index__t">The coordinator</span></a></li>
-      <li><a href="#problem"><span class="scene-index__n">02</span><span class="scene-index__t">The original problem</span></a></li>
-      <li><a href="#inbox"><span class="scene-index__n">03</span><span class="scene-index__t">Final Inspection Inbox</span></a></li>
-      <li><a href="#qc"><span class="scene-index__n">04</span><span class="scene-index__t">Automation + human QC</span></a></li>
-      <li><a href="#dashboard"><span class="scene-index__n">05</span><span class="scene-index__t">Operational dashboard</span></a></li>
-      <li><a href="#attention"><span class="scene-index__n">06</span><span class="scene-index__t">Need attention</span></a></li>
-      <li><a href="#crew"><span class="scene-index__n">07</span><span class="scene-index__t">Work-quality review</span></a></li>
-      <li><a href="#archive"><span class="scene-index__n">08</span><span class="scene-index__t">Report dictionary</span></a></li>
-      <li><a href="#planning"><span class="scene-index__n">09</span><span class="scene-index__t">Visit planning</span></a></li>
-      <li><a href="#trend"><span class="scene-index__n">10</span><span class="scene-index__t">Performance trend</span></a></li>
-      <li><a href="#equipment"><span class="scene-index__n">11</span><span class="scene-index__t">3D equipment context</span></a></li>
-      <li><a href="#impact"><span class="scene-index__n">12</span><span class="scene-index__t">Connected workflow</span></a></li>
+      <li><a href="#hero"><span class="scene-index__n">01</span><span class="scene-index__t">The Project Coordinator</span></a></li>
+      <li><a href="#plan"><span class="scene-index__n">02</span><span class="scene-index__t">A controlled plan</span></a></li>
+      <li><a href="#readiness"><span class="scene-index__n">03</span><span class="scene-index__t">Crew and equipment readiness</span></a></li>
+      <li><a href="#field"><span class="scene-index__n">04</span><span class="scene-index__t">Field execution</span></a></li>
+      <li><a href="#wims"><span class="scene-index__n">05</span><span class="scene-index__t">From field reports to WIMS</span></a></li>
+      <li><a href="#equipment"><span class="scene-index__n">06</span><span class="scene-index__t">Wellhead integrity model</span></a></li>
+      <li><a href="#evaluation"><span class="scene-index__n">07</span><span class="scene-index__t">Continuous evaluation</span></a></li>
+      <li><a href="#hse"><span class="scene-index__n">08</span><span class="scene-index__t">HSE governance</span></a></li>
+      <li><a href="#commercial"><span class="scene-index__n">09</span><span class="scene-index__t">Commercial control</span></a></li>
+      <li><a href="#spr"><span class="scene-index__n">10</span><span class="scene-index__t">SPR and client review</span></a></li>
+      <li><a href="#connected"><span class="scene-index__n">11</span><span class="scene-index__t">The connected role</span></a></li>
     </ol>
   </nav>
 
@@ -53,78 +52,200 @@
 
   <main id="main">
 
-    <!-- 01 HERO ============================================================ -->
-    <section id="hero" class="scene scene--dark scene--hero" data-scene="hero" data-scene-label="The coordinator" aria-labelledby="hero-title">
+    <!-- 01 THE PROJECT COORDINATOR ======================================== -->
+    <section id="hero" class="scene scene--dark scene--hero" data-scene="hero" data-chapter="01" data-scene-label="The Project Coordinator" aria-labelledby="hero-title">
       <div class="wrap hero">
         <div class="hero__copy">
-          <p class="eyebrow"><span class="eyebrow__n">01</span> Fakhri · Well Integrity Project Coordinator</p>
-          <h1 id="hero-title" class="display display--hero">I built the system that turns hundreds of field inspection reports into coordinated well integrity decisions.</h1>
-          <p class="lede">As a Well Integrity Project Coordinator, I developed WIMS to automate report tracking, preserve human quality control, identify inspection issues, support visit planning, monitor maintenance outcomes, and make physical equipment problems easier to understand.</p>
+          <p class="eyebrow" data-reveal><span class="eyebrow__n">01</span> Fakhri · Project Coordinator – Well Integrity</p>
+          <h1 id="hero-title" class="display display--hero" data-reveal="heading">I coordinated the people, equipment, information, safety, and commercial controls behind wellhead integrity performance.</h1>
+          <p class="lede" data-reveal>As Project Coordinator for the OSES wellhead and X-mas tree preventive-maintenance project, I connected contract requirements, field execution, well-integrity data, HSE compliance, financial control, and client performance reviews.</p>
           <ul class="capability-index" aria-label="Capability areas">
-            <li><span>01</span>Well Integrity Project Coordination</li>
-            <li><span>02</span>Inspection Data Governance</li>
-            <li><span>03</span>Digital Application Development</li>
-            <li><span>04</span>Maintenance Performance Monitoring</li>
-            <li><span>05</span>Three.js Equipment Visualization</li>
+            <li><span>01</span><a href="#plan">Project &amp; Contract Setup</a></li>
+            <li><span>02</span><a href="#field">Field Operations Coordination</a></li>
+            <li><span>03</span><a href="#wims">Well Integrity Data Analysis</a></li>
+            <li><span>04</span><a href="#hse">HSE &amp; Quality Governance</a></li>
+            <li><span>05</span><a href="#commercial">Commercial Performance</a></li>
+            <li><span>06</span><a href="#spr">Client &amp; Stakeholder Management</a></li>
           </ul>
-          <a class="scroll-cue" href="#problem">
+          <a class="scroll-cue" href="#plan">
             <span class="scroll-cue__line" aria-hidden="true"></span>
-            Follow the inspection data
+            Follow the project cycle
           </a>
+        </div>
+        <div class="hero__portrait">
+          <figure class="doc doc--portrait" style="--ratio: 4 / 5; --pos: 50% 25%">
+      <div class="doc__frame" data-parallax>
+        <picture>
+          <source type="image/avif" srcset="/assets/documentary/06-real-professional-portrait-640.avif 640w, /assets/documentary/06-real-professional-portrait-1024.avif 1024w, /assets/documentary/06-real-professional-portrait-1600.avif 1600w" sizes="(max-width: 720px) 70vw, 22vw" />
+          <source type="image/webp" srcset="/assets/documentary/06-real-professional-portrait-640.webp 640w, /assets/documentary/06-real-professional-portrait-1024.webp 1024w, /assets/documentary/06-real-professional-portrait-1600.webp 1600w" sizes="(max-width: 720px) 70vw, 22vw" />
+          <img src="/assets/documentary/06-real-professional-portrait-1024.webp" alt="Portrait of Fakhri, Project Coordinator for well integrity, in work attire." fetchpriority="high" decoding="async" />
+        </picture>
+        <span class="doc__grade" aria-hidden="true"></span>
+      </div>
+      <figcaption><span class="tag">Real photograph</span> Fakhri — Project Coordinator, Well Integrity.</figcaption>
+    </figure>
         </div>
         <div class="hero__frame" data-fallback-slot="hero" aria-hidden="true"></div>
       </div>
-      <p class="model-caption wrap">Simplified interactive wellhead/X-mas tree visualization for portfolio communication.</p>
+      <p class="model-caption wrap">Simplified, non-certified wellhead/X-mas tree model for portfolio communication.</p>
     </section>
 
-    <!-- 02 PROBLEM ========================================================= -->
-    <section id="problem" class="scene scene--dark" data-scene="problem" data-scene-label="The original problem" aria-labelledby="problem-title">
-      <div class="wrap split-left">
-        <div class="panel-dark">
-          <p class="eyebrow"><span class="eyebrow__n">02</span> The original problem</p>
-          <h2 id="problem-title" class="display">The challenge was not collecting more files. It was turning those files into a reliable coordination system.</h2>
-          <p>Every well visit ends in an Excel Final Inspection report: general information, pressure observations, visual inspection and valve maintenance for each Christmas-tree valve, leak tests and a handover. Reports arrive from different wells, platforms and crews, one workbook at a time.</p>
-
-          <ol class="problem-list">
-            <li>
-              <h3>Reports distributed across separate workbooks</h3>
-              <code class="fragment">SAMPLE FINAL INSPECTION PLATFORM-B #28.xlsx · 6 sheets</code>
-            </li>
-            <li>
-              <h3>Inconsistent well naming</h3>
-              <code class="fragment">WELL-B28 · WELL B 28 · B#28 · WELLB-028</code>
-            </li>
-            <li>
-              <h3>Incomplete or unreadable inspection fields</h3>
-              <code class="fragment">Valve Type: <mark>—</mark> · Easy to Operate: <mark>Yes?</mark></code>
-            </li>
-            <li>
-              <h3>Difficulty locating equipment problems</h3>
-              <code class="fragment">Remarks: “see note” · valve column 10 of 12</code>
-            </li>
-            <li>
-              <h3>Repeated manual recap work</h3>
-              <code class="fragment">recap_valves_final_v7.xlsx</code>
-            </li>
-            <li>
-              <h3>Limited visibility across visits</h3>
-              <code class="fragment">Last visit: <mark>?</mark> · Previous finding: <mark>?</mark></code>
-            </li>
-            <li>
-              <h3>Difficulty planning the next priorities</h3>
-              <code class="fragment">Next due: <mark>not calculated</mark></code>
-            </li>
+    <!-- 02 A CONTROLLED PLAN =============================================== -->
+    <section id="plan" class="scene scene--paper scene--pin" data-scene="plan" data-chapter="02" data-scene-label="A controlled plan" aria-labelledby="plan-title">
+      <div class="pin" data-pin>
+        <div class="wrap plan">
+          <header class="plan__head">
+            <p class="eyebrow" data-reveal><span class="eyebrow__n">02</span> Starting with a controlled plan</p>
+            <h2 id="plan-title" class="display" data-reveal="heading">Before the crew mobilized, the project needed a workable commercial, operational, and safety baseline.</h2>
+            <p data-reveal>What I inherited: a new contract, a crew mix that included first-time OSES personnel, and inspection reports that still lived in separate workbooks. The first job was to turn obligations into controls.</p>
+          </header>
+          <ul class="keypoints" aria-label="What I prepared">
+            <li>Translated contract requirements into project controls.</li>
+            <li>Prepared P&amp;L and revenue / margin forecasts.</li>
+            <li>Mapped manpower and equipment requirements.</li>
+            <li>Prepared the HSE Plan, Bridging Document, mobilization plan and readiness tracking.</li>
+          </ul>
+          <ol class="chain" data-chain aria-label="Project-start sequence">
+            <li class="chain__rail" aria-hidden="true" role="presentation"><span class="chain__fill" data-chain-fill></span></li>
+            <li class="chain__step"><span class="chain__n">01</span><h3>Contract Review</h3><p>Scope, KPIs and reporting duties turned into a control list.</p></li>
+            <li class="chain__step"><span class="chain__n">02</span><h3>P&amp;L Forecast</h3><p>Revenue, cost and margin forecast before the first invoice.</p></li>
+            <li class="chain__step"><span class="chain__n">03</span><h3>HSE Plan</h3><p>Hazards, controls and responsibilities for this scope.</p></li>
+            <li class="chain__step"><span class="chain__n">04</span><h3>Bridging Document</h3><p>Contractor and client HSE systems aligned into one agreement.</p></li>
+            <li class="chain__step"><span class="chain__n">05</span><h3>Crew Matrix</h3><p>Roles mapped to competencies and certificate validity.</p></li>
+            <li class="chain__step"><span class="chain__n">06</span><h3>Equipment Readiness</h3><p>Calibration, lifting certificates, toolboxes and consumables.</p></li>
+            <li class="chain__step chain__step--milestone"><span class="chain__n">07</span><h3>Mobilization</h3><p>Plan and readiness tracker closed before sailing.</p></li>
           </ol>
-          <p class="note">Fragments above are fictional and follow the structure of a Final Inspection report, not its contents.</p>
         </div>
       </div>
     </section>
 
-    <!-- 03 INBOX =========================================================== -->
-    <section id="inbox" class="scene scene--dark" data-scene="inbox" data-scene-label="Final Inspection Inbox" aria-labelledby="inbox-title">
+    <!-- 03 READINESS ======================================================= -->
+    <section id="readiness" class="scene scene--ink" data-scene="readiness" data-chapter="03" data-scene-label="Crew and equipment readiness" aria-labelledby="readiness-title">
+      <div class="wrap readiness">
+        <header class="readiness__head">
+          <p class="eyebrow" data-reveal><span class="eyebrow__n">03</span> Crew and equipment readiness</p>
+          <h2 id="readiness-title" class="display" data-reveal="heading">Readiness was verified before the team entered the field.</h2>
+        </header>
+        <div class="readiness__photo">
+          <figure class="doc " style="--ratio: 4 / 3; --pos: 50% 45%">
+      <div class="doc__frame" data-parallax>
+        <picture>
+          <source type="image/avif" srcset="/assets/documentary/02-real-crew-planning-640.avif 640w, /assets/documentary/02-real-crew-planning-1024.avif 1024w, /assets/documentary/02-real-crew-planning-1600.avif 1600w" sizes="(max-width: 720px) 100vw, 50vw" />
+          <source type="image/webp" srcset="/assets/documentary/02-real-crew-planning-640.webp 640w, /assets/documentary/02-real-crew-planning-1024.webp 1024w, /assets/documentary/02-real-crew-planning-1600.webp 1600w" sizes="(max-width: 720px) 100vw, 50vw" />
+          <img src="/assets/documentary/02-real-crew-planning-1024.webp" alt="Project team seated around a table reviewing printed documents during a pre-job planning discussion." loading="lazy" decoding="async" />
+        </picture>
+        <span class="doc__grade" aria-hidden="true"></span>
+      </div>
+      <figcaption><span class="tag">Real project record</span> Pre-job coordination: the crew reviews task documents, competency requirements and the work plan before mobilization. The photo shows the planning discussion, not the inspected equipment.</figcaption>
+    </figure>
+        </div>
+        <div class="matrix" data-matrix>
+          <div class="matrix__filters" role="group" aria-label="Filter readiness checks">
+            <button type="button" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-filter="people" aria-pressed="false">People</button>
+            <button type="button" data-filter="permits" aria-pressed="false">Permits</button>
+            <button type="button" data-filter="equipment" aria-pressed="false">Equipment</button>
+            <button type="button" data-filter="briefing" aria-pressed="false">Briefing</button>
+          </div>
+          <ul class="matrix__rows" data-matrix-rows></ul>
+          <noscript>
+            <ul class="matrix__rows">
+              <li>Competency and technical understanding</li><li>One SIKA and permit readiness</li><li>BSS / Sea Survival and MCU validity</li>
+              <li>Calibrated pressure gauges and flowmeters</li><li>Certified lifting equipment and toolboxes</li><li>Consumables, PPE and supporting documents</li><li>Pre-job briefing and task understanding</li>
+            </ul>
+          </noscript>
+        </div>
+        <dl class="counters" data-counters>
+          <div><dt>One SIKA readiness</dt><dd><span class="counters__from">75% →</span> <span data-count="100" data-from="75" data-suffix="%">100%</span></dd></div>
+          <div><dt>Personnel authorized and BSS-ready</dt><dd><span data-count="16">16</span><span class="counters__of"> / 16</span></dd></div>
+          <div><dt>First-time OSES personnel prepared</dt><dd><span data-count="10">10</span></dd></div>
+          <div><dt>Personnel rejected by the client</dt><dd class="is-pass"><span data-count="0">0</span></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 04 FIELD EXECUTION ================================================= -->
+    <section id="field" class="scene scene--dark scene--field" data-scene="field" data-chapter="04" data-scene-label="Field execution" aria-labelledby="field-title">
+      <div class="wrap fieldx">
+        <div class="fieldx__copy">
+          <p class="eyebrow" data-reveal><span class="eyebrow__n">04</span> Coordinating field execution</p>
+          <h2 id="field-title" class="display" data-reveal="heading">Two vessel-based crews. One coordinated visit programme.</h2>
+          <p>Each crew sailed a planned loop of well visits. My job was to keep the programme, the people, the permits, the materials and the reports moving together.</p>
+          <dl class="stats">
+            <div><dt>Average well visits per month</dt><dd><span data-count="84">84</span></dd></div>
+            <div><dt>Well visits supported in 2025</dt><dd>≈ <span data-count="1000" data-group>1,000</span></dd></div>
+            <div><dt>Productive utilization</dt><dd>87–89%</dd></div>
+            <div><dt>H2 2025 reporting coverage</dt><dd><span data-count="448">448</span> wells · <span data-count="2494" data-group>2,494</span> valves</dd></div>
+          </dl>
+          <div class="crews" data-crews>
+            <p class="crews__hint">Select a route to see its work sequence, or a node to open its visit steps.</p>
+          <div class="crew" data-crew="a">
+            <button type="button" class="crew__route" data-route="a" aria-pressed="false" aria-describedby="route-a-seq"><span class="crew__swatch" aria-hidden="true"></span>Crew A · Vessel 1</button>
+            <p class="crew__seq" id="route-a-seq">Mobilize from supply base → Pre-job briefing and PTW on board → Inspect → test → maintain at each node → Report findings the same day → Return and demobilize</p>
+            <ul class="crew__nodes" aria-label="Crew A · Vessel 1 well visits">
+            <li><button type="button" class="node-btn" data-node="a1" aria-pressed="false"><span class="node-btn__id">Node A1</span><span class="node-btn__t">Routine preventive maintenance</span></button></li>
+            <li><button type="button" class="node-btn" data-node="a2" aria-pressed="false"><span class="node-btn__id">Node A2</span><span class="node-btn__t">Valve servicing and greasing</span></button></li>
+            <li><button type="button" class="node-btn" data-node="a3" aria-pressed="false"><span class="node-btn__id">Node A3</span><span class="node-btn__t">Troubleshooting a hard-to-operate valve</span></button></li>
+            <li><button type="button" class="node-btn" data-node="a4" aria-pressed="false"><span class="node-btn__id">Node A4</span><span class="node-btn__t">Pressure mapping and leak test</span></button></li>
+            </ul>
+          </div>
+          <div class="crew" data-crew="b">
+            <button type="button" class="crew__route" data-route="b" aria-pressed="false" aria-describedby="route-b-seq"><span class="crew__swatch" aria-hidden="true"></span>Crew B · Vessel 2</button>
+            <p class="crew__seq" id="route-b-seq">Mobilize from supply base → Pre-job briefing and PTW on board → Carry corrective items from previous visits → Report findings the same day → Return and demobilize</p>
+            <ul class="crew__nodes" aria-label="Crew B · Vessel 2 well visits">
+            <li><button type="button" class="node-btn" data-node="b1" aria-pressed="false"><span class="node-btn__id">Node B1</span><span class="node-btn__t">Routine preventive maintenance</span></button></li>
+            <li><button type="button" class="node-btn" data-node="b2" aria-pressed="false"><span class="node-btn__id">Node B2</span><span class="node-btn__t">Corrective maintenance follow-up</span></button></li>
+            <li><button type="button" class="node-btn" data-node="b3" aria-pressed="false"><span class="node-btn__id">Node B3</span><span class="node-btn__t">Gauge replacement and pressure verification</span></button></li>
+            <li><button type="button" class="node-btn" data-node="b4" aria-pressed="false"><span class="node-btn__id">Node B4</span><span class="node-btn__t">Annulus valve test</span></button></li>
+            </ul>
+          </div>
+          </div>
+          <article class="field-detail" data-field-detail aria-live="polite">
+            <p class="field-detail__empty">No node selected. Each visit follows five steps: inspection, testing, maintenance, troubleshooting and reporting.</p>
+          </article>
+        </div>
+        <div class="fieldx__frame" data-field-frame></div>
+      </div>
+      <div class="stage__hotspots" data-field-layer aria-hidden="true" hidden></div>
+      <p class="model-caption wrap">Abstract route map. Node names and positions are fictional and do not represent real wells, platforms or vessels.</p>
+    </section>
+
+    <!-- 05 FROM FIELD REPORTS TO WIMS ======================================= -->
+    <section id="wims" class="scene scene--ink" data-scene="wims" data-chapter="05" data-scene-label="From field reports to WIMS" aria-labelledby="wims-title">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal><span class="eyebrow__n">05</span> From field reports to WIMS</p>
+        <h2 id="wims-title" class="display display--wide" data-reveal="heading">Field reports became a governed data pipeline the whole project could act on.</h2>
+        <p class="lede">Every visit ends in a Final Inspection report. I developed WIMS so those reports are imported, checked by a person where judgment matters, and turned into dashboards, corrective queues, visit plans and SPR evidence.</p>
+        <ol class="pipeline pipeline--wims" data-pipeline aria-label="WIMS data pipeline">
+          <li><a href="#inbox">Final Inspection</a></li>
+          <li><a href="#inbox">Automatic Import</a></li>
+          <li><a href="#qc" data-kind="attn">Human QC</a></li>
+          <li><a href="#qc" data-kind="pass">Validated Record</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#attention">Corrective Queue</a></li>
+          <li><a href="#planning">Visit Planning</a></li>
+          <li><a href="#spr">SPR</a></li>
+        </ol>
+        <div class="wims-scale">
+          <dl class="stats stats--big">
+            <div><dt>Valve-inspection records</dt><dd><span data-count="7713" data-group>7,713</span></dd></div>
+            <div><dt>Troubleshooting records</dt><dd><span data-count="1418" data-group>1,418</span></dd></div>
+          </dl>
+          <ul class="ticks">
+            <li>Searchable visit history and pressure mapping</li>
+            <li>Red / amber / green integrity classification</li>
+            <li>Next-visit recommendations</li>
+            <li>Interactive 3D equipment visualization</li>
+          </ul>
+        </div>
+        <p class="callout">WIMS supports coordination, traceability, prioritization and technical communication. It does not replace certified engineering assessment.</p>
+      </div>
+    </section>
+
+    <section id="inbox" class="scene scene--dark" data-scene="inbox" data-chapter="05" data-scene-label="Final Inspection Inbox" aria-labelledby="inbox-title">
       <div class="wrap split-left">
         <div class="panel-dark">
-          <p class="eyebrow"><span class="eyebrow__n">03</span> Final Inspection Inbox</p>
+          <p class="eyebrow"><span class="eyebrow__n">05.1</span> Final Inspection Inbox</p>
           <h2 id="inbox-title" class="display">Drop the report into the inspection inbox. WIMS begins tracking it automatically.</h2>
           <ol class="steps">
             <li><span class="steps__n">1</span><div><h3>Reports are placed into the Final Inspection Inbox</h3><p>A monitored folder is the single entry point. No one has to remember to upload a file.</p></div></li>
@@ -143,11 +264,10 @@
       </div>
     </section>
 
-    <!-- 04 AUTOMATION + HUMAN QC ========================================== -->
-    <section id="qc" class="scene scene--dark" data-scene="qc" data-scene-label="Automation + human QC" aria-labelledby="qc-title">
+    <section id="qc" class="scene scene--dark" data-scene="qc" data-chapter="05" data-scene-label="Automation + human QC" aria-labelledby="qc-title">
       <div class="wrap split-left">
         <div class="panel-dark">
-          <p class="eyebrow"><span class="eyebrow__n">04</span> Automation with human quality control</p>
+          <p class="eyebrow"><span class="eyebrow__n">05.2</span> Automation with human quality control</p>
           <h2 id="qc-title" class="display">Automation where the data is reliable. Human review where judgment matters.</h2>
           <p>Spreadsheet cells are parsed into structured inspection fields. Each record then takes one of two paths.</p>
 
@@ -189,11 +309,10 @@
       </div>
     </section>
 
-    <!-- 05 DASHBOARD ======================================================= -->
-    <section id="dashboard" class="scene scene--paper" data-scene="dashboard" data-scene-label="Operational dashboard" aria-labelledby="dashboard-title">
+    <section id="dashboard" class="scene scene--paper" data-scene="dashboard" data-chapter="05" data-scene-label="Operational dashboard" aria-labelledby="dashboard-title">
       <div class="wrap spread">
         <header class="spread__head">
-          <p class="eyebrow"><span class="eyebrow__n">05</span> Operational dashboard</p>
+          <p class="eyebrow"><span class="eyebrow__n">05.3</span> Operational dashboard</p>
           <h2 id="dashboard-title" class="display">Hundreds of reports become one coordinated operational view.</h2>
           <p>Validated records are counted once, in one place, with the scoring rules written on the screen: Lock Open, Pneumatic and Production Choke valves stay in the reports but are excluded from every score and percentage.</p>
         </header>
@@ -220,11 +339,10 @@
       </div>
     </section>
 
-    <!-- 06 NEED ATTENTION ================================================== -->
-    <section id="attention" class="scene scene--paper" data-scene="attention" data-scene-label="Need attention" aria-labelledby="attention-title">
+    <section id="attention" class="scene scene--paper" data-scene="attention" data-chapter="05" data-scene-label="Need attention" aria-labelledby="attention-title">
       <div class="wrap spread spread--flip">
         <header class="spread__head">
-          <p class="eyebrow"><span class="eyebrow__n">06</span> Need Attention workflow</p>
+          <p class="eyebrow"><span class="eyebrow__n">05.4</span> Need Attention workflow</p>
           <h2 id="attention-title" class="display">The system does not only count problems. It shows exactly where they must be corrected.</h2>
           <p>Dashboard totals break down into individual corrective tasks. Each one carries its full address, so the person fixing it never has to search through workbooks.</p>
         </header>
@@ -261,11 +379,10 @@
       </div>
     </section>
 
-    <!-- 07 CREW ============================================================ -->
-    <section id="crew" class="scene scene--paper" data-scene="crew" data-scene-label="Work-quality review" aria-labelledby="crew-title">
+    <section id="crew" class="scene scene--paper" data-scene="crew" data-chapter="05" data-scene-label="Work-quality review" aria-labelledby="crew-title">
       <div class="wrap spread">
         <header class="spread__head">
-          <p class="eyebrow"><span class="eyebrow__n">07</span> Crew performance and work-quality review</p>
+          <p class="eyebrow"><span class="eyebrow__n">05.5</span> Crew performance and work-quality review</p>
           <h2 id="crew-title" class="display">Validated inspection records support fair review and continuous work-quality improvement.</h2>
           <p>Because every valve outcome is tied to a validated report, crew results can be discussed with evidence rather than impressions.</p>
         </header>
@@ -292,11 +409,10 @@
       </div>
     </section>
 
-    <!-- 08 ARCHIVE ========================================================= -->
-    <section id="archive" class="scene scene--paper" data-scene="archive" data-scene-label="Report dictionary" aria-labelledby="archive-title">
+    <section id="archive" class="scene scene--paper" data-scene="archive" data-chapter="05" data-scene-label="Report dictionary" aria-labelledby="archive-title">
       <div class="wrap">
         <header class="spread__head spread__head--wide">
-          <p class="eyebrow"><span class="eyebrow__n">08</span> Searchable report dictionary</p>
+          <p class="eyebrow"><span class="eyebrow__n">05.6</span> Searchable report dictionary</p>
           <h2 id="archive-title" class="display">One searchable source for every inspection report.</h2>
           <p>Every Final Inspection file is registered with its well, platform, inspection date, scope, source and anomaly summary. In WIMS, authorised users can trace a record back to its workbook, view it and download the original.</p>
         </header>
@@ -333,11 +449,10 @@
       </div>
     </section>
 
-    <!-- 09 PLANNING ======================================================== -->
-    <section id="planning" class="scene scene--paper" data-scene="planning" data-scene-label="Visit planning" aria-labelledby="planning-title">
+    <section id="planning" class="scene scene--paper" data-scene="planning" data-chapter="05" data-scene-label="Visit planning" aria-labelledby="planning-title">
       <div class="wrap spread spread--flip">
         <header class="spread__head">
-          <p class="eyebrow"><span class="eyebrow__n">09</span> Visit history and planning</p>
+          <p class="eyebrow"><span class="eyebrow__n">05.7</span> Visit history and planning</p>
           <h2 id="planning-title" class="display">Historical inspection records become the basis for the next field priority.</h2>
           <p>WIMS groups every visit by well and calculates the next due date from the latest valid inspection. It supports planning and recommendations; the Project Coordinator remains responsible for final prioritisation and operational decisions.</p>
         </header>
@@ -377,11 +492,10 @@
       </div>
     </section>
 
-    <!-- 10 TREND =========================================================== -->
-    <section id="trend" class="scene scene--paper" data-scene="trend" data-scene-label="Performance trend" aria-labelledby="trend-title">
+    <section id="trend" class="scene scene--paper" data-scene="trend" data-chapter="05" data-scene-label="Performance trend" aria-labelledby="trend-title">
       <div class="wrap">
         <header class="spread__head spread__head--wide">
-          <p class="eyebrow"><span class="eyebrow__n">10</span> Performance trend</p>
+          <p class="eyebrow"><span class="eyebrow__n">05.8</span> Performance trend</p>
           <h2 id="trend-title" class="display">Every imported inspection updates the wider well integrity performance picture.</h2>
           <p>After each import, WIMS recalculates the cumulative passed percentage from 1 January to the latest inspection. Early in the year a single report moves the line; as records accumulate, the line shows the real level of performance.</p>
         </header>
@@ -409,17 +523,16 @@
       </div>
     </section>
 
-    <!-- 11 EQUIPMENT ======================================================= -->
-    <section id="equipment" class="scene scene--dark scene--equipment" data-scene="equipment" data-scene-label="3D equipment context" aria-labelledby="equipment-title">
+    <section id="equipment" class="scene scene--dark scene--equipment" data-scene="equipment" data-chapter="06" data-scene-label="Wellhead integrity model" aria-labelledby="equipment-title">
       <div class="wrap equipment">
         <div class="equipment__copy">
-          <p class="eyebrow"><span class="eyebrow__n">11</span> From spreadsheet issue to 3D equipment context</p>
-          <h2 id="equipment-title" class="display">A spreadsheet can record the issue. A 3D view can show where the issue exists.</h2>
-          <p>Select an inspection record to locate it on the wellhead and X-mas tree, or select a marker on the model.</p>
+          <p class="eyebrow" data-reveal><span class="eyebrow__n">06</span> Interactive wellhead integrity model</p>
+          <h2 id="equipment-title" class="display" data-reveal="heading">A report records the finding. The model shows where it sits and what happens next.</h2>
+          <p>Select a component to turn the model toward it, read a sanitized finding, and follow it to its report and next visit.</p>
 
           <div class="records" role="region" aria-label="Inspection records for the example well" tabindex="-1">
             <table class="records__table">
-              <caption class="visually-hidden">Fictional inspection records for WELL-A07. Select a row to show it on the 3D model and read the full record.</caption>
+              <caption class="visually-hidden">Fictional inspection records for a demonstration well, WELL-A07. Select a row to show it on the 3D model and read the full record.</caption>
               <thead><tr><th scope="col">Component</th><th scope="col">Latest result</th><th scope="col">Severity</th></tr></thead>
               <tbody data-records></tbody>
             </table>
@@ -430,11 +543,20 @@
           </article>
 
           <ul class="legend" aria-label="Marker colours">
-            <li><span class="dot dot--pass" aria-hidden="true"></span>Passed / verified</li>
+            <li><span class="dot dot--pass" aria-hidden="true"></span>Verified / operable</li>
             <li><span class="dot dot--attn" aria-hidden="true"></span>Requires attention</li>
             <li><span class="dot dot--crit" aria-hidden="true"></span>Critical finding</li>
-            <li><span class="dot dot--na" aria-hidden="true"></span>No test / insufficient data</li>
+            <li><span class="dot dot--na" aria-hidden="true"></span>Not tested / insufficient data</li>
           </ul>
+
+          <figure class="result" aria-labelledby="result-title">
+            <p id="result-title" class="result__k">Operable-valve performance · same measurement method across SPR periods</p>
+            <div class="result__rows" data-result>
+              <p class="result__row"><span class="result__label">H1 2025</span><span class="result__track"><span class="result__bar" style="--w: .53"></span></span><span class="result__v">53%</span></p>
+              <p class="result__row result__row--now"><span class="result__label">H1 2026</span><span class="result__track"><span class="result__bar" style="--w: .68"></span></span><span class="result__v">68%</span></p>
+            </div>
+            <figcaption><strong>+15 percentage points.</strong> A team result: field crews, maintenance follow-up and corrective actions that I coordinated and monitored through WIMS. The application made the change visible; the crews made it happen.</figcaption>
+          </figure>
         </div>
 
         <div class="equipment__frame" data-equipment-frame data-fallback-slot="equipment">
@@ -450,45 +572,218 @@
            Kept inside this section so keyboard order is: records → view controls → markers. -->
       <svg class="stage__leader" data-leader aria-hidden="true"><line x1="0" y1="0" x2="0" y2="0" /></svg>
       <div class="stage__hotspots" data-hotspot-layer role="group" aria-label="Markers on the 3D model" hidden></div>
-      <p class="model-caption wrap">Simplified interactive wellhead/X-mas tree visualization for portfolio communication. It is a communication and coordination tool, not a replacement for engineering review, and not a certified representation of any equipment.</p>
+      <p class="model-caption wrap">Simplified, non-certified wellhead/X-mas tree model for portfolio communication. Findings are fictional demonstration data. It supports coordination and does not replace engineering review.</p>
     </section>
 
-    <!-- 12 IMPACT ========================================================== -->
-    <section id="impact" class="scene scene--dark scene--impact" data-scene="impact" data-scene-label="Connected workflow" aria-labelledby="impact-title">
+    <!-- 07 CONTINUOUS EVALUATION =========================================== -->
+    <section id="evaluation" class="scene scene--paper" data-scene="evaluation" data-chapter="07" data-scene-label="Continuous evaluation" aria-labelledby="evaluation-title">
+      <div class="wrap evaluation">
+        <header class="evaluation__head">
+          <p class="eyebrow" data-reveal><span class="eyebrow__n">07</span> Continuous project evaluation</p>
+          <h2 id="evaluation-title" class="display" data-reveal="heading">Every activity became an input for the next operational decision.</h2>
+        </header>
+        <div class="evaluation__photo">
+          <figure class="doc " style="--ratio: 3 / 2; --pos: 50% 50%">
+      <div class="doc__frame" data-parallax>
+        <picture>
+          <source type="image/avif" srcset="/assets/documentary/03-real-project-review-640.avif 640w, /assets/documentary/03-real-project-review-1024.avif 1024w, /assets/documentary/03-real-project-review-1600.avif 1600w" sizes="(max-width: 720px) 100vw, 50vw" />
+          <source type="image/webp" srcset="/assets/documentary/03-real-project-review-640.webp 640w, /assets/documentary/03-real-project-review-1024.webp 1024w, /assets/documentary/03-real-project-review-1600.webp 1600w" sizes="(max-width: 720px) 100vw, 50vw" />
+          <img src="/assets/documentary/03-real-project-review-1024.webp" alt="Project team in a meeting room reviewing project progress together." loading="lazy" decoding="async" />
+        </picture>
+        <span class="doc__grade" aria-hidden="true"></span>
+      </div>
+      <figcaption><span class="tag">Real project record</span> Internal project review: plan-versus-actual, HSE findings and commercial follow-up discussed in one meeting, so each decision had an owner before the next trip.</figcaption>
+    </figure>
+        </div>
+        <ol class="layers" data-layers aria-label="Review layers">
+          <li><span class="layers__n">1</span><div><h3>Operational events and plan-versus-actual</h3><p>Visits completed and deferred, the reasons, and crew utilization against plan.</p></div></li>
+          <li><span class="layers__n">2</span><div><h3>HSE compliance, observations and corrective actions</h3><p>Findings from each trip, who closes them, and whether they repeat.</p></div></li>
+          <li><span class="layers__n">3</span><div><h3>Commercial implications</h3><p>Cost impact, materials required for the next scope, and legitimate upselling opportunities where the client needs additional work.</p></div></li>
+        </ol>
+        <div class="closure" data-closure>
+          <p class="closure__label">One finding, followed to closure <span>(fictional example)</span></p>
+          <ol class="closure__steps" role="list">
+            <li class="closure__rail" aria-hidden="true" role="presentation"><span class="closure__fill" data-closure-fill></span></li>
+            <li><button type="button" data-step="0" aria-pressed="true">Event Recorded</button></li>
+            <li><button type="button" data-step="1" aria-pressed="false">Root Cause</button></li>
+            <li><button type="button" data-step="2" aria-pressed="false">Risk / Impact</button></li>
+            <li><button type="button" data-step="3" aria-pressed="false">Corrective Action</button></li>
+            <li><button type="button" data-step="4" aria-pressed="false">Owner</button></li>
+            <li><button type="button" data-step="5" aria-pressed="false">Due Date</button></li>
+            <li><button type="button" data-step="6" aria-pressed="false">Closure</button></li>
+          </ol>
+          <p class="closure__text" data-closure-text aria-live="polite">Event recorded — the crew reports a wing-valve packing leak that persists after greasing at Node A3; WIMS flags it as critical.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 HSE GOVERNANCE ================================================== -->
+    <section id="hse" class="scene scene--ink" data-scene="hse" data-chapter="08" data-scene-label="HSE governance" aria-labelledby="hse-title">
+      <div class="wrap hse">
+        <header class="hse__head">
+          <p class="eyebrow" data-reveal><span class="eyebrow__n">08</span> HSE governance</p>
+          <h2 id="hse-title" class="display" data-reveal="heading">Safety was designed into the project before execution and monitored throughout delivery.</h2>
+        </header>
+        <div class="hse__photo">
+          <figure class="doc " style="--ratio: 3 / 2; --pos: 50% 50%">
+      <div class="doc__frame" data-parallax>
+        <picture>
+          <source type="image/avif" srcset="/assets/documentary/05-real-hse-review-640.avif 640w, /assets/documentary/05-real-hse-review-1024.avif 1024w, /assets/documentary/05-real-hse-review-1600.avif 1600w" sizes="(max-width: 720px) 100vw, 50vw" />
+          <source type="image/webp" srcset="/assets/documentary/05-real-hse-review-640.webp 640w, /assets/documentary/05-real-hse-review-1024.webp 1024w, /assets/documentary/05-real-hse-review-1600.webp 1600w" sizes="(max-width: 720px) 100vw, 50vw" />
+          <img src="/assets/documentary/05-real-hse-review-1024.webp" alt="Project team gathered for an HSE review session." loading="lazy" decoding="async" />
+        </picture>
+        <span class="doc__grade" aria-hidden="true"></span>
+      </div>
+      <figcaption><span class="tag">Real project record</span> HSE review with the project team: observations, corrective actions and training needs discussed as a group. A real team record, not a staged award.</figcaption>
+    </figure>
+        </div>
+        <ol class="controls" aria-label="How the HSE controls connect">
+          <li><span class="controls__k">Plan</span><ul><li>HSE Plan</li><li>Bridging Document</li></ul></li>
+          <li><span class="controls__k">Assess</span><ul><li>JSA and Risk Assessment</li><li>PTW / One SIKA</li></ul></li>
+          <li><span class="controls__k">Execute</span><ul><li>Pre-job briefing</li><li>Fit-to-Work</li><li>Post-job briefing</li></ul></li>
+          <li><span class="controls__k">Learn</span><ul><li>Training</li><li>Safety observations</li><li>Corrective-action closure</li></ul><span class="controls__loop">Feeds the next plan revision</span></li>
+        </ol>
+        <dl class="counters counters--hse" data-counters>
+          <div><dt>Recordable incidents, H1 2026</dt><dd class="is-pass"><span data-count="0">0</span></dd></div>
+          <div><dt>Project safe man-hours</dt><dd><span data-count="9624" data-group>9,624</span></dd></div>
+          <div><dt>Safe workdays</dt><dd><span data-count="380">380</span></dd></div>
+          <div><dt>Safety observations</dt><dd><span data-count="781">781</span></dd></div>
+          <div><dt>Internal training sessions</dt><dd><span data-count="21">21</span></dd></div>
+        </dl>
+        <p class="milestone"><span class="milestone__k">Shared milestone</span> The project team contributed to the broader PHE OSES five-million-safe-man-hour milestone — an achievement shared by every operator and contractor team on site, not an individual one.</p>
+      </div>
+    </section>
+
+    <!-- 09 COMMERCIAL CONTROL ============================================== -->
+    <section id="commercial" class="scene scene--paper" data-scene="commercial" data-chapter="09" data-scene-label="Commercial control" aria-labelledby="commercial-title">
+      <div class="wrap commercial">
+        <header class="commercial__head">
+          <p class="eyebrow" data-reveal><span class="eyebrow__n">09</span> Commercial and contract control</p>
+          <h2 id="commercial-title" class="display" data-reveal="heading">Commercial control ran alongside field execution, not after it.</h2>
+          <p>Contract values stay confidential. Each financial layer is shown separately, with percentages only where a percentage was tracked.</p>
+        </header>
+        <ol class="bands" data-bands aria-label="Financial control layers">
+          <li class="band" data-kind="revenue">
+            <div class="band__head"><h3>Contract revenue</h3><p>Baseline for every other layer. Value not disclosed.</p></div>
+            <div class="band__track"><span class="band__bar" style="--w: 1"></span></div>
+          </li>
+          <li class="band" data-kind="invoice">
+            <div class="band__head"><h3>Invoice / proforma / outstanding</h3><p>Paid-contract realization tracked from <strong>72%</strong> to <strong><span data-realization>87</span>%</strong>.</p></div>
+            <div class="band__track band__track--stack" role="img" aria-label="Paid 87 percent of contract; the remainder split between proforma and outstanding.">
+              <span class="band__bar band__bar--paid" data-paid style="--w: .87"></span><span class="band__bar band__bar--pending"></span>
+              <span class="band__tick" style="--at: .72" aria-hidden="true">72%</span>
+            </div>
+          </li>
+          <li class="band" data-kind="cost">
+            <div class="band__head"><h3>Project cost</h3><p>Tracked monthly against the P&amp;L forecast.</p></div>
+            <div class="band__track"><span class="band__bar band__bar--cost" style="--w: .88"></span></div>
+          </li>
+          <li class="band" data-kind="margin">
+            <div class="band__head"><h3>Margin</h3><p>Maintained <strong>above 10%</strong> through the coordination period.</p></div>
+            <div class="band__track band__track--margin"><span class="band__floor" style="--at: .1" aria-hidden="true">10% floor</span><span class="band__bar band__bar--margin" style="--w: .12"></span></div>
+          </li>
+          <li class="band band--opportunity" data-kind="opportunity">
+            <div class="band__head"><h3>Upselling opportunity</h3><p>≈ IDR 2 billion in supported / generated contract upselling <strong>opportunities</strong>. Not recognized revenue.</p></div>
+            <div class="band__track"><span class="band__bar band__bar--opp" style="--w: .3"></span></div>
+          </li>
+        </ol>
+        <div class="tkdn">
+          <p class="tkdn__k">TKDN (local content)</p>
+          <p class="tkdn__v"><span data-count="81.09" data-from="70" data-decimals="2" data-suffix="%">81.09%</span> <span class="tkdn__vs">achieved against an 80.45% commitment</span></p>
+          <div class="tkdn__track" aria-hidden="true"><span class="tkdn__bar" style="--w: .8109"></span><span class="tkdn__commit" style="--at: .8045"></span></div>
+        </div>
+        <p class="note">Bar lengths are proportional only where a percentage is stated (invoice realization, margin floor, TKDN). Revenue, cost and opportunity bars are schematic.</p>
+      </div>
+    </section>
+
+    <!-- 10 SPR AND CLIENT REVIEW =========================================== -->
+    <section id="spr" class="scene scene--ink" data-scene="spr" data-chapter="10" data-scene-label="SPR and client review" aria-labelledby="spr-title">
+      <div class="wrap spr" data-spr>
+        <p class="eyebrow" data-reveal><span class="eyebrow__n">10</span> SPR and client satisfaction</p>
+        <h2 id="spr-title" class="display display--wide" data-reveal="heading">I translated field activity into a performance story the client could evaluate.</h2>
+        <div class="spr__panels">
+          <article class="spr__panel" aria-labelledby="spr-a">
+            <figure class="doc " style="--ratio: 3 / 2; --pos: 50% 50%">
+      <div class="doc__frame" data-parallax>
+        <picture>
+          <source type="image/avif" srcset="/assets/documentary/01-real-spr-presentation-640.avif 640w, /assets/documentary/01-real-spr-presentation-1024.avif 1024w, /assets/documentary/01-real-spr-presentation-1600.avif 1600w" sizes="(max-width: 720px) 100vw, 50vw" />
+          <source type="image/webp" srcset="/assets/documentary/01-real-spr-presentation-640.webp 640w, /assets/documentary/01-real-spr-presentation-1024.webp 1024w, /assets/documentary/01-real-spr-presentation-1600.webp 1600w" sizes="(max-width: 720px) 100vw, 50vw" />
+          <img src="/assets/documentary/01-real-spr-presentation-1024.webp" alt="Fakhri presenting the Supplier Performance Review in a meeting room; the projected slide is masked for confidentiality." loading="lazy" decoding="async" />
+        </picture>
+        <span class="doc__mask" style="--mx: 55%; --my: 8%; --mw: 40%; --mh: 50%" aria-hidden="true"><span>Confidential content masked</span></span>
+        <span class="doc__grade" aria-hidden="true"></span>
+      </div>
+      <figcaption><span class="tag">Real project record</span> SPR presentation. The projected slide is covered: client data stays confidential; the photo shows the presenter and the review setting.</figcaption>
+    </figure>
+            <h3 id="spr-a">Presentation and evidence</h3>
+            <ol class="spr__list" data-spr-list>
+              <li>Visits and utilization against plan</li>
+              <li>Integrity status and operable-valve trend</li>
+              <li>HSE indicators and observations</li>
+              <li>Commercial and invoice status</li>
+              <li>Root causes and corrective actions</li>
+            </ol>
+          </article>
+          <article class="spr__panel" aria-labelledby="spr-b">
+            <figure class="doc " style="--ratio: 3 / 2; --pos: 50% 50%">
+      <div class="doc__frame" data-parallax>
+        <picture>
+          <source type="image/avif" srcset="/assets/documentary/04-real-client-performance-review-640.avif 640w, /assets/documentary/04-real-client-performance-review-1024.avif 1024w, /assets/documentary/04-real-client-performance-review-1600.avif 1600w" sizes="(max-width: 720px) 100vw, 50vw" />
+          <source type="image/webp" srcset="/assets/documentary/04-real-client-performance-review-640.webp 640w, /assets/documentary/04-real-client-performance-review-1024.webp 1024w, /assets/documentary/04-real-client-performance-review-1600.webp 1600w" sizes="(max-width: 720px) 100vw, 50vw" />
+          <img src="/assets/documentary/04-real-client-performance-review-1024.webp" alt="Client and contractor representatives in discussion around a meeting table during a performance review." loading="lazy" decoding="async" />
+        </picture>
+        <span class="doc__grade" aria-hidden="true"></span>
+      </div>
+      <figcaption><span class="tag">Real project record</span> Client performance review: stakeholders question the evidence and agree improvement commitments for the next period.</figcaption>
+    </figure>
+            <h3 id="spr-b">Stakeholder discussion and improvement commitments</h3>
+            <ol class="spr__list" data-spr-list>
+              <li>Questions answered from WIMS records</li>
+              <li>Integrity follow-ups agreed per component</li>
+              <li>HSE actions carried into the next period</li>
+              <li>Invoice and scope items clarified</li>
+              <li>Improvement commitments with owner and date</li>
+            </ol>
+          </article>
+        </div>
+        <p class="spr__beat" data-reveal="heading">The review connected operational delivery, HSE, quality, commercial performance, root causes, and forward actions.</p>
+        <p class="spr__close">Client SPR outcomes remained satisfactory, with no formal performance-related corrective-action MoM issued during my coordination period.</p>
+      </div>
+    </section>
+
+    <!-- 11 THE CONNECTED ROLE ============================================== -->
+    <section id="connected" class="scene scene--dark scene--impact" data-scene="impact" data-chapter="11" data-scene-label="The connected role" aria-labelledby="connected-title">
       <div class="wrap">
-        <p class="eyebrow"><span class="eyebrow__n">12</span> The connected workflow</p>
-        <ol class="pipeline" data-pipeline aria-label="WIMS workflow">
-          <li><a href="#inbox">Final Inspection Reports</a></li>
-          <li><a href="#inbox">Automatic Scan</a></li>
-          <li><a href="#qc">Data Validation</a></li>
-          <li><a href="#qc" data-kind="attn">Human QC</a></li>
-          <li><a href="#dashboard">Dashboard</a></li>
-          <li><a href="#attention">Corrective Queue</a></li>
-          <li><a href="#crew">Crew Review</a></li>
-          <li><a href="#archive">Report Archive</a></li>
-          <li><a href="#planning">Visit Planning</a></li>
-          <li><a href="#trend">Performance Trend</a></li>
-          <li><a href="#equipment">3D Issue Visualization</a></li>
+        <p class="eyebrow"><span class="eyebrow__n">11</span> The connected role</p>
+        <ol class="pipeline pipeline--system" data-pipeline aria-label="The control system across the project">
+          <li><a href="#plan">Contract</a></li>
+          <li><a href="#plan">P&amp;L</a></li>
+          <li><a href="#hse">HSE</a></li>
+          <li><a href="#readiness">Readiness</a></li>
+          <li><a href="#field">Field Execution</a></li>
+          <li><a href="#wims">WIMS</a></li>
+          <li><a href="#equipment">Integrity Review</a></li>
+          <li><a href="#commercial">Invoice</a></li>
+          <li><a href="#spr">SPR</a></li>
+          <li><a href="#evaluation" data-kind="loop">Improvement</a></li>
         </ol>
 
-        <h2 id="impact-title" class="display display--closing">I coordinate more than activities. I design the information flow that makes those activities visible, traceable, and actionable.</h2>
+        <h2 id="connected-title" class="display display--closing">I did not only coordinate activities. I designed the control system that kept the project ready, visible, safe, traceable, and commercially accountable.</h2>
 
         <div class="impact__actions">
-          <a class="btn btn--primary" href="#inbox">Explore the WIMS workflow</a>
-          <a class="btn btn--ghost" href="#capabilities">Review my Project Coordinator capabilities</a>
+          <a class="btn btn--primary" href="#wims">Explore WIMS Case Study</a>
+          <a class="btn btn--ghost" href="cv/Fakhri-CV.pdf" download>Download CV <span class="btn__meta">PDF</span></a>
         </div>
 
-        <section id="capabilities" class="capabilities" aria-labelledby="capabilities-title">
-          <h3 id="capabilities-title" class="capabilities__title">Capabilities, with where to see them</h3>
+        <section id="roles" class="capabilities" aria-labelledby="roles-title">
+          <h3 id="roles-title" class="capabilities__title">Where this experience fits</h3>
           <ul>
-            <li><h4>Well Integrity Coordination</h4><p>Ownership of the inspection cycle from field report to next visit.</p><a href="#planning">Scene 09</a></li>
-            <li><h4>Workflow Automation</h4><p>Monitored inbox, automatic detection and parsing of workbooks.</p><a href="#inbox">Scene 03</a></li>
-            <li><h4>Inspection Data Governance</h4><p>Master well list, explicit scoring exclusions, traceable source files.</p><a href="#dashboard">Scene 05</a></li>
-            <li><h4>Human-in-the-Loop Quality Control</h4><p>Ambiguous identities and unreadable fields paused for confirmation.</p><a href="#qc">Scene 04</a></li>
-            <li><h4>Dashboard Development</h4><p>One operational view of visits and valve-maintenance outcomes.</p><a href="#dashboard">Scene 05</a></li>
-            <li><h4>Maintenance Performance Monitoring</h4><p>Corrective queue, crew review and cumulative trend.</p><a href="#trend">Scene 10</a></li>
-            <li><h4>Visit Planning</h4><p>History and next-due dates as the basis for field priorities.</p><a href="#planning">Scene 09</a></li>
-            <li><h4>3D Technical Communication</h4><p>Findings located on equipment for faster shared understanding.</p><a href="#equipment">Scene 11</a></li>
+            <li><h4>Project Engineer</h4><p>Scope, schedule, cost and HSE controls set up from contract review.</p><a href="#plan">Chapter 02</a></li>
+            <li><h4>Project Coordinator</h4><p>Two crews, permits, materials and reports kept moving together.</p><a href="#field">Chapter 04</a></li>
+            <li><h4>Well Integrity</h4><p>Valve status, pressure mapping and findings traced to reports and next visits.</p><a href="#equipment">Chapter 06</a></li>
+            <li><h4>Field Engineer</h4><p>Inspection, testing, maintenance and troubleshooting sequence understood from the field.</p><a href="#field">Chapter 04</a></li>
+            <li><h4>Drilling / Operations</h4><p>Readiness, PTW and offshore logistics coordinated before every trip.</p><a href="#readiness">Chapter 03</a></li>
+            <li><h4>Technical-Commercial</h4><p>P&amp;L, invoice realization, TKDN and upselling opportunities tracked with evidence.</p><a href="#commercial">Chapter 09</a></li>
           </ul>
         </section>
       </div>
@@ -497,8 +792,8 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p class="site-footer__disclaimer">This portfolio uses sanitized and simplified representations of inspection workflows. It does not publish client records, original inspection reports, proprietary engineering data, or certified equipment geometry.</p>
-      <p>Supporting inspection documents are managed in a controlled internal environment. All wells, platforms, people, files, dates and figures shown are fictional demonstration data.</p>
+      <p class="site-footer__disclaimer">This portfolio uses sanitized and simplified representations of project workflows. It does not publish client records, original reports, contract values, proprietary engineering data, or certified equipment geometry.</p>
+      <p>Documentary photographs are real project records; confidential screen, document and identity content was redacted before publication. OSES and PHE OSES are named for context only; this is a personal portfolio, not an official publication. All wells, nodes, people, files and dates in the demonstrations are fictional.</p>
       <p class="site-footer__meta">WIMS Fakhri Creator is an application developed independently by Fakhri. Built with Three.js and GSAP. Fonts: Archivo, Hanken Grotesk, JetBrains Mono (SIL Open Font License).</p>
     </div>
   </footer>
