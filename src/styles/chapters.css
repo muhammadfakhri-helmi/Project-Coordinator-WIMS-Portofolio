@@ -33,14 +33,6 @@
   content: ""; position: absolute; inset: 0; opacity: .12; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-/* privacy layer over projected screens that remain in frame */
-.doc__mask {
-  position: absolute; left: var(--mx); top: var(--my); width: var(--mw); height: var(--mh); z-index: 1;
-  display: grid; place-items: center; text-align: center; padding: 8px;
-  background: repeating-linear-gradient(135deg, var(--navy-800) 0 10px, var(--navy-900) 10px 20px);
-  border: 1px solid var(--line-dark-strong);
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-dim);
-}
 .doc figcaption { margin-top: 12px; font-size: var(--fs-sm); color: var(--ink-faint); max-width: 62ch; }
 .scene--paper .doc figcaption { color: var(--paper-dim); }
 .doc .tag { color: var(--attn); }

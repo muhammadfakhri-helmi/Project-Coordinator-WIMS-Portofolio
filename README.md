@@ -45,8 +45,8 @@ python3 tools/build_documentary.py
 ```
 
 It writes resized WebP/AVIF files to `public/assets/documentary/` (only
-resizing and re-encoding; metadata dropped). The page adds its grade, grain,
-vignette and a confidentiality layer over the projected SPR slide.
+resizing and re-encoding; metadata dropped). The page adds its grade, grain and
+vignette; confidential content is redacted in the source photos, not by page overlays.
 
 The "Download CV" button links to `public/cv/Fakhri-CV.pdf`, the one PDF the
 privacy checker allows.

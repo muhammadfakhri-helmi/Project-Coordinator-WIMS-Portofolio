@@ -17,7 +17,7 @@ coordination, WIMS, integrity review, commercial control and SPR.
 | --- | --- |
 | Stack | Keep Vite + vanilla ES modules + Three.js + GSAP ScrollTrigger. No React migration. Framer Motion intent is reproduced with GSAP scrub, IntersectionObserver and CSS transitions. |
 | Client name | "OSES" and "PHE OSES" may appear. No logos, wells, platforms, contract numbers or IDR contract values. |
-| Photos | The owner redacts the six documentary PNGs before upload. Only resized WebP/AVIF derivatives are shipped from `public/assets/documentary/`. A CSS grade/grain/vignette layer is added on top; confidentiality masks are also drawn in the page where projected screens remain visible. |
+| Photos | The owner redacts the six documentary PNGs before upload. Only resized WebP/AVIF derivatives are shipped from `public/assets/documentary/`. A CSS grade/grain/vignette layer is added on top. Redaction lives in the source photos (e.g. the blurred SPR slide); the page draws no overlay masks. |
 | CV | One file is allowed: `public/cv/Fakhri-CV.pdf` (checker whitelist). |
 | Deploy | Push to `claude/wizardly-carson-bm5qus`, open a PR to `main`; Pages deploys on merge. |
 
