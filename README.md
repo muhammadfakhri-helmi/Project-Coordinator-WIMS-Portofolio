@@ -1,7 +1,7 @@
-# Project Coordinator – Well Integrity · OSES Case Study
+# Well Integrity Project Coordinator · OSES Case Study
 
-A scroll-driven 3D portfolio about Fakhri's role as Project Coordinator – Well
-Integrity on the OSES wellhead and X-mas tree preventive-maintenance project:
+A scroll-driven 3D portfolio about Fakhri's role as Well Integrity Project
+Coordinator on the OSES wellhead and X-mas tree preventive-maintenance project:
 contract and P&L setup, HSE governance, crew and equipment readiness, two
 vessel-based field crews, WIMS inspection data, integrity review, commercial
 control and client SPR reviews.
