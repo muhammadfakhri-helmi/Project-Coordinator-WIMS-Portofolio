@@ -4,7 +4,7 @@ Resize the pre-redacted documentary photographs into the files the site uses.
 Usage:
     python3 tools/build_documentary.py [--src portfolio-assets/oses-project-coordinator/real-documentary]
 
-Input: the six PNGs, already redacted by the owner (projected slides,
+Input: the five PNGs, already redacted by the owner (projected slides,
 documents, logos, readable names and client data covered before upload).
 Output: public/assets/documentary/<name>-{640,1024,1600}.{avif,webp}.
 Only resizing and re-encoding happen here: no generative edits, no retouching.
@@ -24,7 +24,6 @@ NAMES = [
     "03-real-project-review",
     "04-real-client-performance-review",
     "05-real-hse-review",
-    "06-real-professional-portrait",
 ]
 WIDTHS = (640, 1024, 1600)
 

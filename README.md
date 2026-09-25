@@ -20,7 +20,7 @@ control and client SPR reviews.
 
 Eleven chapters, one continuous scroll:
 
-1. The Project Coordinator — portrait, headline, wellhead assembling from a dark silhouette
+1. The Project Coordinator — headline and a wellhead assembling from a dark silhouette
 2. A controlled plan — Contract Review → P&L → HSE Plan → Bridging Document → Crew Matrix → Equipment Readiness → Mobilization
 3. Crew and equipment readiness — filterable readiness matrix and count-once outcome counters
 4. Field execution — abstract route map with two vessel loops, selectable routes and nodes (SVG on small screens)
@@ -30,13 +30,13 @@ Eleven chapters, one continuous scroll:
 8. HSE governance — control relationships and verified project-period indicators
 9. Commercial control — revenue, invoice status, cost, margin and opportunity shown separately; TKDN
 10. SPR and client review — two synchronized panels
-11. The connected role — the whole control system, closing statement, CTAs
+11. The connected role — the whole control system, closing statement, link back to the WIMS case study
 
 Design spec: `docs/superpowers/specs/2026-09-25-oses-project-coordinator-design.md`.
 
 ## Documentary photographs
 
-Upload the six **pre-redacted** photographs to
+Upload the five **pre-redacted** photographs to
 `portfolio-assets/oses-project-coordinator/real-documentary/` (names in the README
 there), then run:
 
@@ -47,9 +47,6 @@ python3 tools/build_documentary.py
 It writes resized WebP/AVIF files to `public/assets/documentary/` (only
 resizing and re-encoding; metadata dropped). The page adds its grade, grain and
 vignette; confidential content is redacted in the source photos, not by page overlays.
-
-The "Download CV" button links to `public/cv/Fakhri-CV.pdf`, the one PDF the
-privacy checker allows.
 
 ## Features
 
